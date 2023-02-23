@@ -13,6 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//Homepage
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+//About Us
+
+
+//Contact Us
+
+
+//FAQ
