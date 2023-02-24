@@ -26,3 +26,6 @@ Route::get('/', function () {
 
 
 //FAQ
+Route::get('/faq', function () {
+    return view('faq');
+});
