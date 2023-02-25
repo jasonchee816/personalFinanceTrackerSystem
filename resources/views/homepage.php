@@ -13,17 +13,35 @@
     <!-- Style CSS -->
     <link rel="stylesheet" href="{{asset('css/Style.css')}}">
 
-    <title>LMEO - FAQ</title>
-
-
-
+    <title>LMEO - Personal Expense Management Software</title>
 </head>
 
 <body class="vh-100 bg-light">
     <div class="container-fluid position-relative" style="overflow-x: hidden;">
         <div class="row flex-nowrap vh-100">
-            <div class="row">
-                This is FAQ Example
+            <div class="header">
+              <div class="row">
+                <div class="col-sm-4">
+                    <a href ="/">Logo</a>
+                  </div>
+                  <div class="col-sm-1">
+                    <a href="faq">FAQ</a>
+                  </div>
+                  <div class="col-sm-1">
+                    <a href="">AboutUs</a>
+                  </div>
+              </div>
+            </div>
+            <div class="body-container">
+              <div class="description-title">
+                <h1>Expense management for personal</h1>
+              </div>
+              <div class="description-content">
+                <h1>Across 5+ years, Zoho Expense has helped tens of thousands of
+                  businesses streamline corporate travel, automate expense reporting, gain
+                  complete control over spending, and get crucial financial insights to
+                  stay two steps ahead</h1>
+              </div>
             </div>
         </div>
     </div>
