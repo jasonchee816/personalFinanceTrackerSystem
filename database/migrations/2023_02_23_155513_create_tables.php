@@ -19,9 +19,17 @@ class CreateTables extends Migration
         });
 
         //Users
-
+        Schema::create('users', function (Blueprint $table) {
+            $table->id();
+            $table->string('email');
+            $table->string('password');
+            $table->bigInteger('tel_no');
+            $table->string('name');
+            $table->boolean('is_admin');
+        });
 
         //Wallets
+
 
 
         //Transactions
