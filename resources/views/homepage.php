@@ -17,35 +17,42 @@
 </head>
 
 <body class="vh-100 bg-light">
-    <div class="container-fluid position-relative" style="overflow-x: hidden;">
-        <div class="row flex-nowrap vh-100">
-            <div class="header">
-              <div class="row">
-                <div class="col-sm-4">
-                    <a href ="/">Logo</a>
-                  </div>
-                  <div class="col-sm-1">
-                    <a href="faq">FAQ</a>
-                  </div>
-                  <div class="col-sm-1">
-                    <a href="">AboutUs</a>
-                  </div>
-              </div>
-            </div>
-            <div class="body-container">
-              <div class="description-title">
-                <h1>Expense management for personal</h1>
-              </div>
-              <div class="description-content">
-                <h1>Across 5+ years, Zoho Expense has helped tens of thousands of
-                  businesses streamline corporate travel, automate expense reporting, gain
-                  complete control over spending, and get crucial financial insights to
-                  stay two steps ahead</h1>
-              </div>
-            </div>
-        </div>
+<header class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">LMEO - Personal Expense Management Software</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="\">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">AboutUs</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="faq">FAQ</a>
+            </li>
+        </ul>
     </div>
+    <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+            <a class="nav-link" href="#">Register</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Sign In</a>
+        </li>
+    </ul>
+</header>
 
+<section class="py-5">
+  <div class="container">
+    <h1 class="text-center mb-4">Travel and expense management for growing businesses</h1>
+    <p class="lead">Across 5+ years, Zoho Expense has helped tens of thousands of businesses
+      streamline corporate travel, automate expense reporting, gain complete control over
+      spending, and get crucial financial insights to stay two steps ahead.</p>
+  </div>
+</section>
 
     <!-- Bootstrap JS -->
     <script type="text/javascript" src="{{asset('js/bootstrap.bundle.min.js')}}"></script>
