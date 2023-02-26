@@ -23,7 +23,9 @@ Route::get('/', function () {
 
 
 //Contact Us
-
+Route::get('/contact', function () {
+    return view('contact_us');
+});
 
 //FAQ
 Route::get('/faq', function () {

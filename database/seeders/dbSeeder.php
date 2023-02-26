@@ -3,9 +3,6 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
-use Hash;
 
 class dbSeeder extends Seeder
 {
@@ -17,15 +14,7 @@ class dbSeeder extends Seeder
     public function run()
     {
         //Users
-        for($i=1;$i<10;$i++){
-            DB::table('users')->insert([
-                'email'=>Str::random(10).'@outlook.com',
-                'password'=>Hash::make('password'),
-                'tel_no'=>random_int(1000000000, 9999999999),
-                'name'=>Str::random(10),
-                'is_admin'=>(bool)random_int(0, 1)
-            ]);
-        }
+
 
         //Wallets
 
@@ -33,8 +22,55 @@ class dbSeeder extends Seeder
         //Transactions
 
 
-        //TransactionCatergories
-
+        //TransactionCatergories 0 = Expenses 1 = Income
+        for($i=1; $i<10; $i++){
+            DB::table('TransactionCategories')->insert(array(
+                array(
+                'name' => "Food & Beverage",
+                'type' => 0,
+                ),
+                array(
+                'name' => "Education",
+                'type' => 0,
+                ),
+                array(
+                'name' => "Entertainment",
+                'type' => 0,
+                ),
+                array(
+                'name' => "Medical",
+                'type' => 0,
+                ),
+                array(
+                'name' => "Utilities",
+                'type' => 0,
+                ),
+                array(
+                'name' => "Others",
+                'type' => 0,
+                ),
+                array(
+                'name' => "Salary",
+                'type' => 1,
+                ),
+                array(
+                'name' => "Investment Return",
+                'type' => 1,
+                ),
+                array(
+                'name' => "Gifts",
+                'type' => 1,
+                ),
+                array(
+                'name' => "Loans",
+                'type' => 1,
+                ),
+                array(
+                'name' => "Others",
+                'type' => 1,
+                )
+                ));
+        }
 
     }
 }
