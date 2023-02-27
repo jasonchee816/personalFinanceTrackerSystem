@@ -25,10 +25,18 @@ class CreateTables extends Migration
 
 
         //Wallets
+        Schema::create('Wallets', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name');
+            $table->double('balance');
+            $table->double('initialBalance');
+            $table->integer('userId');
+            $table->foreign('userId')->references('id')->on('users');
+        });
 
         //TransactionCatergories
         Schema::create('TransactionCategories', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->string('name');
             $table->enum('type', ['income', 'expense']);     
             $table->timestamps();
@@ -40,21 +48,10 @@ class CreateTables extends Migration
             $table->double('amount');
             $table->string('description');
             $table->integer('walletId');
-            // $table->foreign('walletId')->references('id')->on('Wallets');
+            $table->foreign('walletId')->references('id')->on('Wallets');
             $table->integer('category');
             $table->foreign('category')->references('id')->on('TransactionCategories');
-            $table->timestamp('transDate');
-
-            // $table->boolean('type');
-            //$table->enum('method', ['income', 'expense']); 
-        });
-
-        Schema::create('Wallet', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
-            $table->double('balance');
-            $table->double('initialBalance');
-            $table->integer('userId');
+            $table->timestamp('transDate'); 
         });
 
 
@@ -67,9 +64,9 @@ class CreateTables extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Users');
-        Schema::dropIfExists('Wallets');
-        Schema::dropIfExists('TransactionCategories');
         Schema::dropIfExists('Transactions');
+        Schema::dropIfExists('TransactionCategories');
+        Schema::dropIfExists('Wallets');
+        Schema::dropIfExists('Users');
     }
 }
