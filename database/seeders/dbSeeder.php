@@ -29,54 +29,52 @@ class dbSeeder extends Seeder
 
 
         //TransactionCatergories 0 = Expenses 1 = Income
-        for($i=1; $i<10; $i++){
-            DB::table('TransactionCategories')->insert(array(
-                array(
-                'name' => "Food & Beverage",
-                'type' => 0,
-                ),
-                array(
-                'name' => "Education",
-                'type' => 0,
-                ),
-                array(
-                'name' => "Entertainment",
-                'type' => 0,
-                ),
-                array(
-                'name' => "Medical",
-                'type' => 0,
-                ),
-                array(
-                'name' => "Utilities",
-                'type' => 0,
-                ),
-                array(
-                'name' => "Others",
-                'type' => 0,
-                ),
-                array(
-                'name' => "Salary",
-                'type' => 1,
-                ),
-                array(
-                'name' => "Investment Return",
-                'type' => 1,
-                ),
-                array(
-                'name' => "Gifts",
-                'type' => 1,
-                ),
-                array(
-                'name' => "Loans",
-                'type' => 1,
-                ),
-                array(
-                'name' => "Others",
-                'type' => 1,
-                )
-                ));
-        }
+        DB::table('TransactionCategories')->insert(array(
+            array(
+            'name' => 'Food & Beverage',
+            'type' => 'expense',
+            ),
+            array(
+            'name' => 'Education',
+            'type' => 'expense',
+            ),
+            array(
+            'name' => 'Entertainment',
+            'type' => 'expense',
+            ),
+            array(
+            'name' => 'Medical',
+            'type' => 'expense',
+            ),
+            array(
+            'name' => 'Utilities',
+            'type' => 'expense',
+            ),
+            array(
+            'name' => 'Others',
+            'type' => 'expense',
+            ),
+            array(
+            'name' => 'Salary',
+            'type' => 'income',
+            ),
+            array(
+            'name' => 'Investment Return',
+            'type' => 'income',
+            ),
+            array(
+            'name' => 'Gifts',
+            'type' => 'income',
+            ),
+            array(
+            'name' => 'Loans',
+            'type' => 'income',
+            ),
+            array(
+            'name' => 'Others',
+            'type' => 'income',
+            )
+        ));
 
         //Transactions
         for($i=0; $i<10; $i++){

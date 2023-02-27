@@ -30,7 +30,7 @@ class CreateTables extends Migration
         Schema::create('TransactionCategories', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->type();
+            $table->enum('type', ['income', 'expense']);     
             $table->timestamps();
         });
 
