@@ -49,6 +49,14 @@ class CreateTables extends Migration
             //$table->enum('method', ['income', 'expense']); 
         });
 
+        Schema::create('Wallet', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name');
+            $table->double('balance');
+            $table->double('initialBalance');
+            $table->integer('userId');
+        });
+
 
     }
 

@@ -31,3 +31,8 @@ Route::get('/contact', function () {
 Route::get('/faq', function () {
     return view('faq');
 });
+
+//About
+Route::get('/about', function () {
+    return view('about');
+});

@@ -3,6 +3,9 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class dbSeeder extends Seeder
 {
@@ -88,6 +91,16 @@ class dbSeeder extends Seeder
                     //Migration create table change
                     //Models making + factories?
                     //separate seeders too 
+            ]);
+        }
+
+        //Wallet
+        for($i=0; $i<10; $i++){
+            DB::table('wallet')->insert([
+                'name'=>Str::random(10),
+                'balance' => rand(0, 10000) / 100,
+                'initialBalance' => rand(0, 10000) / 100,
+                'userId' => rand(0, 10)
             ]);
         }
 
