@@ -11,7 +11,7 @@ class Wallet extends Model
     public $timestamps = false;
     protected $fillable = ["name","balance","initialBalance","type"];
 
-    public function getUsers()
+    public function getUser()
     {
         return $this->belongsTo(User::class);
     }
