@@ -9,7 +9,7 @@ class Wallet extends Model
 {
     use HasFactory;
     public $timestamps = false;
-    protected $fillable = ["name","balance","initialBalance"];
+    protected $fillable = ["name","balance","initialBalance","type"];
 
     public function users()
     {
