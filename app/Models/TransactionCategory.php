@@ -14,7 +14,7 @@ class transactionCategories extends Model
 
     public function transactions()
     {
-        return $this->belongsTo(transaction::class);
+        return $this->belongsTo(Transaction::class);
     }
 
 }
