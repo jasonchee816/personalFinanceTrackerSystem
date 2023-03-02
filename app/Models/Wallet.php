@@ -11,12 +11,12 @@ class Wallet extends Model
     public $timestamps = false;
     protected $fillable = ["name","balance","initialBalance"];
 
-    public function users()
+    public function getUser()
     {
         return $this->belongsTo(User::class);
     }
 
-    public function transactions()
+    public function getTransactions()
     {
         return $this->hasMany(Transaction::class);
     }

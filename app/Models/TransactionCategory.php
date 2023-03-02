@@ -12,7 +12,7 @@ class transactionCategories extends Model
 
     protected $fillable=["name", "type"];
 
-    public function transactions()
+    public function getTransactions()
     {
         return $this->belongsTo(Transaction::class);
     }

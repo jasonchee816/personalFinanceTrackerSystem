@@ -13,12 +13,12 @@ class transactions extends Model
 
     protected $fillable=["amount", "description", "walletId", "category", "transDate"];
 
-    public function getCategories()
+    public function getCategory()
     {
         return $this->hasOne(TransactionCategory::class);
     }
 
-    public function getWallets()
+    public function getWallet()
     {
         return $this->belongsTo(Wallet::class);
     }
