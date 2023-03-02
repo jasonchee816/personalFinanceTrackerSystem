@@ -10,6 +10,9 @@
   <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" 
+  integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" 
+  crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
     body {
       font: 400 15px Lato, sans-serif;
@@ -18,133 +21,39 @@
     }
 
     h2 {
-      font-size: 24px;
+      font-size: 26px;
       text-transform: uppercase;
       color: #303030;
-      font-weight: 600;
-      margin-bottom: 30px;
+      font-weight: 650;
+      margin-bottom: 20px;
     }
 
     h4 {
-      font-size: 19px;
+      font-size: 22px;
       line-height: 1.375em;
       color: #303030;
-      font-weight: 400;
-      margin-bottom: 30px;
+      font-weight: 450;
+      margin-bottom: 20px;
     }
 
-    .jumbotron {
-      background-color: #f4511e;
+    .container0 {
+      background-color: #406E8E;
       color: #fff;
-      padding: 100px 25px;
+      padding: 80px 25px;
       font-family: Montserrat, sans-serif;
+      justify-contents: center;
+      align-items: center;
     }
-
-    .container-fluid {
-      padding: 60px 50px;
+    .container1 {
+        padding: 60px 50px;
     }
-
-    .bg-grey {
-      background-color: #f6f6f6;
+    .container2 {
+        padding: 60px 50px;
+        background-color: #f6f6f6;
     }
-
-    .logo-small {
-      color: #f4511e;
-      font-size: 50px;
-    }
-
-    .logo {
-      color: #f4511e;
-      font-size: 200px;
-    }
-
-    .thumbnail {
-      padding: 0 0 15px 0;
-      border: none;
-      border-radius: 0;
-    }
-
-    .thumbnail img {
-      width: 100%;
-      height: 100%;
-      margin-bottom: 10px;
-    }
-
-    .carousel-control.right,
-    .carousel-control.left {
-      background-image: none;
-      color: #f4511e;
-    }
-
-    .carousel-indicators li {
-      border-color: #f4511e;
-    }
-
-    .carousel-indicators li.active {
-      background-color: #f4511e;
-    }
-
-    .item h4 {
-      font-size: 19px;
-      line-height: 1.375em;
-      font-weight: 400;
-      font-style: italic;
-      margin: 70px 0;
-    }
-
-    .item span {
-      font-style: normal;
-    }
-
-    .panel {
-      border: 1px solid #f4511e;
-      border-radius: 0 !important;
-      transition: box-shadow 0.5s;
-    }
-
-    .panel:hover {
-      box-shadow: 5px 0px 40px rgba(0, 0, 0, .2);
-    }
-
-    .panel-footer .btn:hover {
-      border: 1px solid #f4511e;
-      background-color: #fff !important;
-      color: #f4511e;
-    }
-
-    .panel-heading {
-      color: #fff !important;
-      background-color: #f4511e !important;
-      padding: 25px;
-      border-bottom: 1px solid transparent;
-      border-top-left-radius: 0px;
-      border-top-right-radius: 0px;
-      border-bottom-left-radius: 0px;
-      border-bottom-right-radius: 0px;
-    }
-
-    .panel-footer {
-      background-color: white !important;
-    }
-
-    .panel-footer h3 {
-      font-size: 32px;
-    }
-
-    .panel-footer h4 {
-      color: #aaa;
-      font-size: 14px;
-    }
-
-    .panel-footer .btn {
-      margin: 15px 0;
-      background-color: #f4511e;
-      color: #fff;
-    }
-
     .navbar {
       margin-bottom: 0;
-      background-color: #f4511e;
+      background-color: #406E8E;
       z-index: 9999;
       border: 0;
       font-size: 12px !important;
@@ -154,14 +63,12 @@
       font-family: Montserrat, sans-serif;
     }
 
-    .navbar li a,
-    .navbar .navbar-brand {
+    .navbar li a, .navbar .navbar-brand {
       color: #fff !important;
     }
 
-    .navbar-nav li a:hover,
-    .navbar-nav li.active a {
-      color: #f4511e !important;
+    .navbar-nav li a:hover, .navbar-nav li.active a {
+      color: #406E8E !important;
       background-color: #fff !important;
     }
 
@@ -170,48 +77,23 @@
       color: #fff !important;
     }
 
-    footer .glyphicon {
-      font-size: 20px;
-      margin-bottom: 20px;
-      color: #f4511e;
+    .icon {
+      font-size: 10px;
+      color: #406E8E;
+    }
+    .question {
+        color: rgba(0, 58, 84, 1);
+        font-size: 27px;
     }
 
-    .slideanim {
-      visibility: hidden;
+    .answer a {
+        color: #332D2D;
     }
-
-    .slide {
-      animation-name: slide;
-      -webkit-animation-name: slide;
-      animation-duration: 1s;
-      -webkit-animation-duration: 1s;
-      visibility: visible;
+    .service-icon {
+        font-size: 50px;
+        margin-bottom: 20px;
+        color: #406E8E;
     }
-
-    @keyframes slide {
-      0% {
-        opacity: 0;
-        transform: translateY(70%);
-      }
-
-      100% {
-        opacity: 1;
-        transform: translateY(0%);
-      }
-    }
-
-    @-webkit-keyframes slide {
-      0% {
-        opacity: 0;
-        -webkit-transform: translateY(70%);
-      }
-
-      100% {
-        opacity: 1;
-        -webkit-transform: translateY(0%);
-      }
-    }
-
     @media screen and (max-width: 768px) {
       .col-sm-4 {
         text-align: center;
@@ -229,6 +111,7 @@
         font-size: 150px;
       }
     }
+
   </style>
 </head>
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
@@ -241,7 +124,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#myPage">Logo</a>
+        <a class="navbar-brand" href="#myPage">LMEO</a>
       </div>
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav navbar-right">
@@ -255,270 +138,88 @@
     </div>
   </nav>
 
-  <div class="jumbotron text-center">
-    <h1>Company</h1>
-    <p>We specialize in blablabla</p>
-    <form>
-      <div class="input-group">
-        <input type="email" class="form-control" size="50" placeholder="Email Address" required>
-        <div class="input-group-btn">
-          <button type="button" class="btn btn-danger">Subscribe</button>
-        </div>
-      </div>
-    </form>
+  <div class="container0">
+    <h1>LMEO COMPANY</h1>
+    <p>Personal Finance Tracker</p>
   </div>
 
   <!-- Container (About Section) -->
-  <div id="about" class="container-fluid">
-    <div class="row">
-      <div class="col-sm-8">
-        <h2>About Company Page</h2><br>
-        <h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-          dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-          commodo consequat.</h4><br>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-          est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-          enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-        <br><button class="btn btn-default btn-lg">Get in Touch</button>
+  <div id="about" class="container1">
+    <!-- <div class="row"> -->
+      <div class="mb-4">
+        <h2 class="text-center">About LMEO Company </h2><br>
+        <h4>Unique and Powerful Website to track your expenses along with incomes. </h4><br>
+        <p>Software is our craft and our passion. At LMEO, we create beautiful software to solve business problems. We believe that software is the ultimate product of the mind and the hands. 				But as much as we love building beautiful software, we think our people and company culture are our most important assets. Our engineers spend years mastering their craft, bringing together decades of engineering expertise to produce a real work of art. When you choose Zoho, you get more than just a single product or a tightly integrated suite. You get our commitment to continuous refinement and to improving your experience. And you get our relentless devotion to your satisfaction. </p>
       </div>
-      <div class="col-sm-4">
-        <span class="glyphicon glyphicon-signal logo"></span>
-      </div>
-    </div>
   </div>
 
-  <div class="container-fluid bg-grey">
-    <div class="row">
-      <div class="col-sm-4">
-        <span class="glyphicon glyphicon-globe logo slideanim"></span>
-      </div>
-      <div class="col-sm-8">
-        <h2>Our Values</h2><br>
-        <h4><strong>MISSION:</strong> Our mission lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-          ullamco laboris nisi ut aliquip ex ea commodo consequat.</h4><br>
-        <p><strong>VISION:</strong> Our vision Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-          laboris nisi ut aliquip ex ea commodo consequat.
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat.</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Container (Services Section) -->
-  <div id="services" class="container-fluid text-center">
+  <div id="services" class="container2 text-center">
     <h2>SERVICES</h2>
-    <h4>What we offer</h4>
+    <h4>What LMEO offers</h4>
     <br>
     <div class="row slideanim">
-      <div class="col-sm-4">
-        <span class="glyphicon glyphicon-off logo-small"></span>
-        <h4>POWER</h4>
-        <p>Lorem ipsum dolor sit amet..</p>
-      </div>
-      <div class="col-sm-4">
-        <span class="glyphicon glyphicon-heart logo-small"></span>
-        <h4>LOVE</h4>
-        <p>Lorem ipsum dolor sit amet..</p>
-      </div>
-      <div class="col-sm-4">
-        <span class="glyphicon glyphicon-lock logo-small"></span>
-        <h4>JOB DONE</h4>
-        <p>Lorem ipsum dolor sit amet..</p>
-      </div>
+        <div class="col-sm-4">
+            <i class="service-icon fas fa-solid fa-credit-card"></i>        
+            <h4>FINANCIAL PLAN</h4>
+            <p></p>
+        </div>
+        <div class="col-sm-4">
+            <i class="service-icon fas fa-wallet"></i>
+            <h4>WALLET</h4>
+            <p>Multiple wallets to be tracked.</p>
+        </div>
+        <div class="col-sm-4">
+            <i class="service-icon fas fa-sharp fa-regular fa-globe"></i>
+            <h4>24/7 TRACKING</h4>
+            <p>Track your expenses anytime & anywhere.</p>
+        </div>
+
     </div>
     <br><br>
-    <div class="row slideanim">
-      <div class="col-sm-4">
-        <span class="glyphicon glyphicon-leaf logo-small"></span>
-        <h4>GREEN</h4>
-        <p>Lorem ipsum dolor sit amet..</p>
-      </div>
-      <div class="col-sm-4">
-        <span class="glyphicon glyphicon-certificate logo-small"></span>
-        <h4>CERTIFIED</h4>
-        <p>Lorem ipsum dolor sit amet..</p>
-      </div>
-      <div class="col-sm-4">
-        <span class="glyphicon glyphicon-wrench logo-small"></span>
-        <h4 style="color:#303030;">HARD WORK</h4>
-        <p>Lorem ipsum dolor sit amet..</p>
-      </div>
-    </div>
   </div>
 
-  <!-- Container (Portfolio Section) -->
-  <div id="portfolio" class="container-fluid text-center bg-grey">
-    <h2>Portfolio</h2><br>
-    <h4>What we have created</h4>
-    <div class="row text-center slideanim">
-      <div class="col-sm-4">
-        <div class="thumbnail">
-          <img src="paris.jpg" alt="Paris" width="400" height="300">
-          <p><strong>Paris</strong></p>
-          <p>Yes, we built Paris</p>
-        </div>
-      </div>
-      <div class="col-sm-4">
-        <div class="thumbnail">
-          <img src="newyork.jpg" alt="New York" width="400" height="300">
-          <p><strong>New York</strong></p>
-          <p>We built New York</p>
-        </div>
-      </div>
-      <div class="col-sm-4">
-        <div class="thumbnail">
-          <img src="sanfran.jpg" alt="San Francisco" width="400" height="300">
-          <p><strong>San Francisco</strong></p>
-          <p>Yes, San Fran is ours</p>
-        </div>
-      </div>
-    </div><br>
+  <!-- Container (FAQ Section) -->
+  <div id="faq" class="container1">
+    <h2 class="text-center">Frequently Asked Questions</h2>
+    <p>03-02-2023</p>
 
-    <h2>What our customers say</h2>
-    <div id="myCarousel" class="carousel slide text-center" data-ride="carousel">
-      <!-- Indicators -->
-      <ol class="carousel-indicators">
-        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-        <li data-target="#myCarousel" data-slide-to="1"></li>
-        <li data-target="#myCarousel" data-slide-to="2"></li>
-      </ol>
-
-      <!-- Wrapper for slides -->
-      <div class="carousel-inner" role="listbox">
-        <div class="item active">
-          <h4>"This company is the best. I am so happy with the result!"<br><span>Michael Roe, Vice President, Comment
-              Box</span></h4>
-        </div>
-        <div class="item">
-          <h4>"One word... WOW!!"<br><span>John Doe, Salesman, Rep Inc</span></h4>
-        </div>
-        <div class="item">
-          <h4>"Could I... BE any more happy with this company?"<br><span>Chandler Bing, Actor, FriendsAlot</span></h4>
-        </div>
-      </div>
-
-      <!-- Left and right controls -->
-      <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </a>
+    <div class="mb-4">
+        <p class="question">What is LMEO Finance Tracking System?</p>
+        <p class="answer">LMEO Finance Tracking System is LMEO's latest System which allows users to
+            track the balance in their different accounts, keep track of their expenses and incomes as
+            well as gain insights of their spending habits. </p>
     </div>
-  </div>
 
-  <!-- Container (Pricing Section) -->
-  <div id="pricing" class="container-fluid">
-    <div class="text-center">
-      <h2>Pricing</h2>
-      <h4>Choose a payment plan that works for you</h4>
+    <div class="mb-4">
+        <p class="question">Who is LMEO?</p>
+        <p class="answer"> We are a Software Company hoping to help people in personal finance. You can
+            learn more about us in <a href="about">here.</a></p>
     </div>
-    <div class="row slideanim">
-      <div class="col-sm-4 col-xs-12">
-        <div class="panel panel-default text-center">
-          <div class="panel-heading">
-            <h1>Basic</h1>
-          </div>
-          <div class="panel-body">
-            <p><strong>20</strong> Lorem</p>
-            <p><strong>15</strong> Ipsum</p>
-            <p><strong>5</strong> Dolor</p>
-            <p><strong>2</strong> Sit</p>
-            <p><strong>Endless</strong> Amet</p>
-          </div>
-          <div class="panel-footer">
-            <h3>$19</h3>
-            <h4>per month</h4>
-            <button class="btn btn-lg">Sign Up</button>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-4 col-xs-12">
-        <div class="panel panel-default text-center">
-          <div class="panel-heading">
-            <h1>Pro</h1>
-          </div>
-          <div class="panel-body">
-            <p><strong>50</strong> Lorem</p>
-            <p><strong>25</strong> Ipsum</p>
-            <p><strong>10</strong> Dolor</p>
-            <p><strong>5</strong> Sit</p>
-            <p><strong>Endless</strong> Amet</p>
-          </div>
-          <div class="panel-footer">
-            <h3>$29</h3>
-            <h4>per month</h4>
-            <button class="btn btn-lg">Sign Up</button>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-4 col-xs-12">
-        <div class="panel panel-default text-center">
-          <div class="panel-heading">
-            <h1>Premium</h1>
-          </div>
-          <div class="panel-body">
-            <p><strong>100</strong> Lorem</p>
-            <p><strong>50</strong> Ipsum</p>
-            <p><strong>25</strong> Dolor</p>
-            <p><strong>10</strong> Sit</p>
-            <p><strong>Endless</strong> Amet</p>
-          </div>
-          <div class="panel-footer">
-            <h3>$49</h3>
-            <h4>per month</h4>
-            <button class="btn btn-lg">Sign Up</button>
-          </div>
-        </div>
-      </div>
+
+    <div class="mb-4">
+        <p class="question">How do I contact LMEO?</p>
+        <p class="answer">You may contact us via any of the methods list in <a href="contact">here.</a>
+        </p>
+    </div>
+
+    <div class="mb-4">
+        <p class="question">Is my data safe with LMEO?</p>
+        <p class="answer">Your data is safe with us. </a></p>
     </div>
   </div>
 
   <!-- Container (Contact Section) -->
-  <div id="contact" class="container-fluid bg-grey">
+  <div id="contact" class="container2">
     <h2 class="text-center">CONTACT</h2>
     <div class="row">
       <div class="col-sm-5">
         <p>Contact us and we'll get back to you within 24 hours.</p>
-        <p><span class="glyphicon glyphicon-map-marker"></span> Chicago, US</p>
-        <p><span class="glyphicon glyphicon-phone"></span> +00 1515151515</p>
-        <p><span class="glyphicon glyphicon-envelope"></span> myemail@something.com</p>
-      </div>
-      <div class="col-sm-7 slideanim">
-        <div class="row">
-          <div class="col-sm-6 form-group">
-            <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
-          </div>
-          <div class="col-sm-6 form-group">
-            <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
-          </div>
-        </div>
-        <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea><br>
-        <div class="row">
-          <div class="col-sm-12 form-group">
-            <button class="btn btn-default pull-right" type="submit">Send</button>
-          </div>
-        </div>
+        <p><span class="icon fas fa-solid fa-map-location-dot"></span> Selangor, Malaysia</p>
+        <p><span class="icon fas fa-phone"></span> +60 12 345 6789</p>
+        <p><span class="icon fas fa-envelope"></span> financetracker@lmeo.com</p>
       </div>
     </div>
   </div>
-
-  <!-- Image of location/map -->
-  <img src="/w3images/map.jpg" class="w3-image w3-greyscale-min" style="width:100%">
-
-  <footer class="container-fluid text-center">
-    <a href="#myPage" title="To Top">
-      <span class="glyphicon glyphicon-chevron-up"></span>
-    </a>
-    <p>Bootstrap Theme Made By <a href="https://www.w3schools.com" title="Visit w3schools">www.w3schools.com</a></p>
-  </footer>
 
   <script>
     $(document).ready(function () {
