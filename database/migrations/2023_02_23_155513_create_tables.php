@@ -15,7 +15,7 @@ class CreateTables extends Migration
     {
         //Users
         Schema::create('users', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->string('email');
             $table->string('password');
             $table->bigInteger('tel_no');
@@ -30,15 +30,14 @@ class CreateTables extends Migration
             $table->string('name');
             $table->double('balance');
             $table->double('initialBalance');
-            $table->integer('userId');
-            $table->foreign('userId')->references('id')->on('users');
+            $table->enum('type', ['Savings Account','e-Wallet','Cash Wallet', 'Credit Card']);
         });
 
         //TransactionCatergories
         Schema::create('TransactionCategories', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->enum('type', ['income', 'expense']);     
+            $table->enum('type', ['income', 'expense']);
             $table->timestamps();
         });
 
@@ -51,7 +50,7 @@ class CreateTables extends Migration
             $table->foreign('walletId')->references('id')->on('Wallets');
             $table->integer('category');
             $table->foreign('category')->references('id')->on('TransactionCategories');
-            $table->timestamp('transDate'); 
+            $table->timestamp('transDate');
         });
 
 
