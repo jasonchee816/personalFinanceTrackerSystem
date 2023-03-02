@@ -26,6 +26,7 @@
       color: #303030;
       font-weight: 650;
       margin-bottom: 20px;
+      text-align: center;    
     }
 
     h4 {
@@ -41,8 +42,10 @@
       color: #fff;
       padding: 80px 25px;
       font-family: Montserrat, sans-serif;
-      justify-contents: center;
-      align-items: center;
+      text-align: center;
+    }
+    .container0 h1{
+        font-size: 50px;
     }
     .container1 {
         padding: 60px 50px;
@@ -140,15 +143,15 @@
 
   <div class="container0">
     <h1>LMEO COMPANY</h1>
-    <p>Personal Finance Tracker</p>
+    <h3>Personal Finance Tracker</h3>
   </div>
 
   <!-- Container (About Section) -->
   <div id="about" class="container1">
     <!-- <div class="row"> -->
       <div class="mb-4">
-        <h2 class="text-center">About LMEO Company </h2><br>
-        <h4>Unique and Powerful Website to track your expenses along with incomes. </h4><br>
+        <h2>About LMEO Company </h2><br>
+        <h4>Unique and Powerful website to track your expenses along with incomes. </h4><br>
         <p>Software is our craft and our passion. At LMEO, we create beautiful software to solve business problems. We believe that software is the ultimate product of the mind and the hands. 				But as much as we love building beautiful software, we think our people and company culture are our most important assets. Our engineers spend years mastering their craft, bringing together decades of engineering expertise to produce a real work of art. When you choose Zoho, you get more than just a single product or a tightly integrated suite. You get our commitment to continuous refinement and to improving your experience. And you get our relentless devotion to your satisfaction. </p>
       </div>
   </div>
@@ -161,7 +164,7 @@
         <div class="col-sm-4">
             <i class="service-icon fas fa-solid fa-credit-card"></i>        
             <h4>FINANCIAL PLAN</h4>
-            <p></p>
+            <p>Wisely planned financial.</p>
         </div>
         <div class="col-sm-4">
             <i class="service-icon fas fa-wallet"></i>
@@ -180,7 +183,7 @@
 
   <!-- Container (FAQ Section) -->
   <div id="faq" class="container1">
-    <h2 class="text-center">Frequently Asked Questions</h2>
+    <h2>Frequently Asked Questions</h2>
     <p>03-02-2023</p>
 
     <div class="mb-4">
@@ -210,7 +213,7 @@
 
   <!-- Container (Contact Section) -->
   <div id="contact" class="container2">
-    <h2 class="text-center">CONTACT</h2>
+    <h2>CONTACT</h2>
     <div class="row">
       <div class="col-sm-5">
         <p>Contact us and we'll get back to you within 24 hours.</p>
