@@ -20,7 +20,7 @@ class User extends Authenticatable
     public $timestamps = false;
     protected $fillable = ['email','password','tel_no','name','is_admin'];
 
-    public function wallets()
+    public function getWallets()
     {
         return $this->hasMany(Wallet::class);
     }
