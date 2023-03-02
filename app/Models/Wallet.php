@@ -8,6 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Wallet extends Model
 {
     use HasFactory;
+
+    const WALLET_TYPE = ['Savings Account','e-Wallet','Cash Wallet', 'Credit Card'];
+
     public $timestamps = false;
     protected $fillable = ["name","balance","initialBalance","type"];
 
