@@ -81,7 +81,7 @@
     }
 
     .icon {
-      font-size: 10px;
+      font-size: 15px;
       color: #406E8E;
     }
     .question {
