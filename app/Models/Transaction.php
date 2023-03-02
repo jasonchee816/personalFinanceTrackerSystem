@@ -11,15 +11,15 @@ class transactions extends Model
 
     public $timestamps = false;
 
-    protected $fillable=["amount", "desc", "walletId", "userId", "categories", "transDate"];
+    protected $fillable=["amount", "desc", "walletId", "userId", "category", "transDate"];
 
     public function getCategories()
     {
-        return $this->hasOne(transactionCategories::class);
+        return $this->hasOne(TransactionCategory::class);
     }
 
     public function getWallets()
     {
-        return $this->belongsTo(wallets::class);
+        return $this->belongsTo(Wallet::class);
     }
 }
