@@ -1,73 +1,8 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Bootstrap 5 -->
-    <!-- <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}"> -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
-    <!-- Style CSS -->
-    <link rel="stylesheet" href="{{asset('css/Style.css')}}">
-
-    <!--FontAwesome 6-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
-        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <title>LMEO - FAQ</title>
-
-    <style>
-        a {
-            color: #332D2D;
-        }
-
-        .navbar div .btn {
-            color: #f8f9fa;
-        }
-
-        body {
-            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-            /* Hide scrollbar for IE, Edge and Firefox */
-            -ms-overflow-style: none;
-            /* IE and Edge */
-            scrollbar-width: none;
-            /* Firefox */
-        }
-
-        /* Hide scrollbar for Chrome, Safari and Opera */
-        body::-webkit-scrollbar {
-            display: none;
-        }
-
-
-
-        .offcanvas {
-            border-radius: 1rem 0 0 1rem;
-        }
-
-        .offcanvas-backdrop {
-            display: none !important;
-        }
-
-        .question {
-            color: rgba(0, 58, 84, 1);
-            font-size: 27px;
-        }
-
-        .answer a {
-            color: #332D2D;
-        }
-    </style>
-
-
-</head>
+@extends('layouts.default')
+@section('content')
 
 <body>
-    <nav class="navbar bg-primary">
+    <!-- <nav class="navbar bg-primary">
         <div class="logoBtn col-lg-4 ps-5">
             <a class="btn ps-5" href="#"><b>LMEO </b></a>
         </div>
@@ -83,7 +18,7 @@
                 <i class="fa-solid fa-bars"></i>
             </a>
         </div>
-    </nav>
+    </nav> -->
     {{--Offcanvas for Mobile Nav Bar--}}
     <div class="offcanvas offcanvas-end px-2" tabindex="-1" id="navbarOffcanvas">
         <div class="offcanvas-header mt-3" id="selectOffcanvasHeader">
@@ -136,19 +71,4 @@
         </div>
 
     </div>
-
-
-    <!-- Bootstrap JS -->
-    <!-- <script type="text/javascript" src="{{asset('js/bootstrap.bundle.min.js')}}"></script> -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
-
-
-    <script>
-
-
-    </script>
-</body>
-
-</html>
+    @stop

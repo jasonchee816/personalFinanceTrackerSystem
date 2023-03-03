@@ -18,7 +18,7 @@ class CreateTables extends Migration
             $table->increments('id');
             $table->string('email');
             $table->string('password');
-            $table->bigInteger('tel_no');
+            $table->string('tel_no');
             $table->string('name');
             $table->boolean('is_admin');
         });
@@ -29,12 +29,14 @@ class CreateTables extends Migration
             $table->increments('id');
             $table->string('name');
             $table->double('balance');
-            $table->double('initialBalance');
+            $table->double('initial_balance');
+            $table->integer('user_id');
+            $table->foreign('user_id')->references('id')->on('Users');
             $table->enum('type', ['Savings Account','e-Wallet','Cash Wallet', 'Credit Card']);
         });
 
         //TransactionCatergories
-        Schema::create('TransactionCategories', function (Blueprint $table) {
+        Schema::create('Transaction_Categories', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->enum('type', ['income', 'expense']);
@@ -46,11 +48,11 @@ class CreateTables extends Migration
             $table->increments('id');
             $table->double('amount');
             $table->string('description');
-            $table->integer('walletId');
-            $table->foreign('walletId')->references('id')->on('Wallets');
+            $table->integer('wallet_id');
+            $table->foreign('wallet_id')->references('id')->on('Wallets');
             $table->integer('category');
-            $table->foreign('category')->references('id')->on('TransactionCategories');
-            $table->timestamp('transDate');
+            $table->foreign('category')->references('id')->on('Transaction_Categories');
+            $table->timestamp('trans_date');
         });
 
 
@@ -64,7 +66,7 @@ class CreateTables extends Migration
     public function down()
     {
         Schema::dropIfExists('Transactions');
-        Schema::dropIfExists('TransactionCategories');
+        Schema::dropIfExists('Transaction_Categories');
         Schema::dropIfExists('Wallets');
         Schema::dropIfExists('Users');
     }

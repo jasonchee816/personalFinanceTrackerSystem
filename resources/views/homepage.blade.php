@@ -10,9 +10,11 @@
   <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" 
-  integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" 
-  crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+    integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Style CSS -->
+  <link rel="stylesheet" href="{{asset('css/Style.css')}}">
   <style>
     body {
       font: 400 15px Lato, sans-serif;
@@ -26,7 +28,7 @@
       color: #303030;
       font-weight: 650;
       margin-bottom: 20px;
-      text-align: center;    
+      text-align: center;
     }
 
     h4 {
@@ -44,16 +46,20 @@
       font-family: Montserrat, sans-serif;
       text-align: center;
     }
-    .container0 h1{
-        font-size: 50px;
+
+    .container0 h1 {
+      font-size: 50px;
     }
+
     .container1 {
-        padding: 60px 50px;
+      padding: 60px 50px;
     }
+
     .container2 {
-        padding: 60px 50px;
-        background-color: #f6f6f6;
+      padding: 60px 50px;
+      background-color: #f6f6f6;
     }
+
     .navbar {
       margin-bottom: 0;
       background-color: #406E8E;
@@ -66,11 +72,13 @@
       font-family: Montserrat, sans-serif;
     }
 
-    .navbar li a, .navbar .navbar-brand {
+    .navbar li a,
+    .navbar .navbar-brand {
       color: #fff !important;
     }
 
-    .navbar-nav li a:hover, .navbar-nav li.active a {
+    .navbar-nav li a:hover,
+    .navbar-nav li.active a {
       color: #406E8E !important;
       background-color: #fff !important;
     }
@@ -84,19 +92,22 @@
       font-size: 15px;
       color: #406E8E;
     }
+
     .question {
-        color: rgba(0, 58, 84, 1);
-        font-size: 27px;
+      color: rgba(0, 58, 84, 1);
+      font-size: 27px;
     }
 
     .answer a {
-        color: #332D2D;
+      color: #332D2D;
     }
+
     .service-icon {
-        font-size: 50px;
-        margin-bottom: 20px;
-        color: #406E8E;
+      font-size: 50px;
+      margin-bottom: 20px;
+      color: #406E8E;
     }
+
     @media screen and (max-width: 768px) {
       .col-sm-4 {
         text-align: center;
@@ -114,7 +125,6 @@
         font-size: 150px;
       }
     }
-
   </style>
 </head>
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
@@ -149,11 +159,17 @@
   <!-- Container (About Section) -->
   <div id="about" class="container1">
     <!-- <div class="row"> -->
-      <div class="mb-4">
-        <h2>About LMEO Company </h2><br>
-        <h4>Unique and Powerful website to track your expenses along with incomes. </h4><br>
-        <p>Software is our craft and our passion. At LMEO, we create beautiful software to solve business problems. We believe that software is the ultimate product of the mind and the hands. 				But as much as we love building beautiful software, we think our people and company culture are our most important assets. Our engineers spend years mastering their craft, bringing together decades of engineering expertise to produce a real work of art. When you choose Zoho, you get more than just a single product or a tightly integrated suite. You get our commitment to continuous refinement and to improving your experience. And you get our relentless devotion to your satisfaction. </p>
-      </div>
+    <div class="mb-4">
+      <h2>About LMEO Company </h2><br>
+      <h4>Unique and Powerful website to track your expenses along with incomes. </h4><br>
+      <p>Software is our craft and our passion. At LMEO, we create beautiful software to solve business problems. We
+        believe that software is the ultimate product of the mind and the hands. But as much as we love building
+        beautiful software, we think our people and company culture are our most important assets. Our engineers spend
+        years mastering their craft, bringing together decades of engineering expertise to produce a real work of art.
+        When you choose Zoho, you get more than just a single product or a tightly integrated suite. You get our
+        commitment to continuous refinement and to improving your experience. And you get our relentless devotion to
+        your satisfaction. </p>
+    </div>
   </div>
 
   <div id="services" class="container2 text-center">
@@ -161,21 +177,21 @@
     <h4>What LMEO offers</h4>
     <br>
     <div class="row slideanim">
-        <div class="col-sm-4">
-            <i class="service-icon fas fa-solid fa-credit-card"></i>        
-            <h4>FINANCIAL PLAN</h4>
-            <p>Wisely planned financial.</p>
-        </div>
-        <div class="col-sm-4">
-            <i class="service-icon fas fa-wallet"></i>
-            <h4>WALLET</h4>
-            <p>Multiple wallets to be tracked.</p>
-        </div>
-        <div class="col-sm-4">
-            <i class="service-icon fas fa-sharp fa-regular fa-globe"></i>
-            <h4>24/7 TRACKING</h4>
-            <p>Track your expenses anytime & anywhere.</p>
-        </div>
+      <div class="col-sm-4">
+        <i class="service-icon fas fa-solid fa-credit-card"></i>
+        <h4>FINANCIAL PLAN</h4>
+        <p>Wisely planned financial.</p>
+      </div>
+      <div class="col-sm-4">
+        <i class="service-icon fas fa-wallet"></i>
+        <h4>WALLET</h4>
+        <p>Multiple wallets to be tracked.</p>
+      </div>
+      <div class="col-sm-4">
+        <i class="service-icon fas fa-sharp fa-regular fa-globe"></i>
+        <h4>24/7 TRACKING</h4>
+        <p>Track your expenses anytime & anywhere.</p>
+      </div>
 
     </div>
     <br><br>
@@ -187,27 +203,27 @@
     <p>03-02-2023</p>
 
     <div class="mb-4">
-        <p class="question">What is LMEO Finance Tracking System?</p>
-        <p class="answer">LMEO Finance Tracking System is LMEO's latest System which allows users to
-            track the balance in their different accounts, keep track of their expenses and incomes as
-            well as gain insights of their spending habits. </p>
+      <p class="question">What is LMEO Finance Tracking System?</p>
+      <p class="answer">LMEO Finance Tracking System is LMEO's latest System which allows users to
+        track the balance in their different accounts, keep track of their expenses and incomes as
+        well as gain insights of their spending habits. </p>
     </div>
 
     <div class="mb-4">
-        <p class="question">Who is LMEO?</p>
-        <p class="answer"> We are a Software Company hoping to help people in personal finance. You can
-            learn more about us in <a href="about">here.</a></p>
+      <p class="question">Who is LMEO?</p>
+      <p class="answer"> We are a Software Company hoping to help people in personal finance. You can
+        learn more about us in <a href="about">here.</a></p>
     </div>
 
     <div class="mb-4">
-        <p class="question">How do I contact LMEO?</p>
-        <p class="answer">You may contact us via any of the methods list in <a href="contact">here.</a>
-        </p>
+      <p class="question">How do I contact LMEO?</p>
+      <p class="answer">You may contact us via any of the methods list in <a href="contact">here.</a>
+      </p>
     </div>
 
     <div class="mb-4">
-        <p class="question">Is my data safe with LMEO?</p>
-        <p class="answer">Your data is safe with us. </a></p>
+      <p class="question">Is my data safe with LMEO?</p>
+      <p class="answer">Your data is safe with us. </a></p>
     </div>
   </div>
 

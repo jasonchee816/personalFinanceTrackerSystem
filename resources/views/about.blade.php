@@ -113,11 +113,16 @@
 			<img src="../general/image/aboutImg.jpg" alt="Header" style="width: 1500px ; height: 600px;">
 		</div>
 		<div style="margin: 100px;">
-			<h1 >Serious Software, Friendly Company.</h1>
+			<h1>Serious Software, Friendly Company.</h1>
 			<p style="font-size: 180%;">
-				Software is our craft and our passion. At LMEO, we create beautiful software to solve business problems. We believe that software is the ultimate product of the mind and the hands. 
+				Software is our craft and our passion. At LMEO, we create beautiful software to solve business problems.
+				We believe that software is the ultimate product of the mind and the hands.
 				<br><br>
-				But as much as we love building beautiful software, we think our people and company culture are our most important assets. Our engineers spend years mastering their craft, bringing together decades of engineering expertise to produce a real work of art. When you choose Zoho, you get more than just a single product or a tightly integrated suite. You get our commitment to continuous refinement and to improving your experience. And you get our relentless devotion to your satisfaction.
+				But as much as we love building beautiful software, we think our people and company culture are our most
+				important assets. Our engineers spend years mastering their craft, bringing together decades of
+				engineering expertise to produce a real work of art. When you choose Zoho, you get more than just a
+				single product or a tightly integrated suite. You get our commitment to continuous refinement and to
+				improving your experience. And you get our relentless devotion to your satisfaction.
 			</p>
 		</div>
 	</div>
