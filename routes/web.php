@@ -40,3 +40,6 @@ Route::get('/about', function () {
 Route::get('/test', function () {
     return view('testingPage');
 });
+
+Route::view('trans','createTransaction');
+Route::post('trans',[createTransaction::class,'createTrans']);

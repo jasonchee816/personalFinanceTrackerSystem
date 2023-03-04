@@ -58,7 +58,10 @@
         margin-bottom: 20px;
         color: #406E8E;
     }
-
+    .btn {
+        background-color: #406E8E;
+        font-size: 20;
+    }
     @media screen and (max-width: 768px) {
         .col-sm-4 {
             text-align: center;
