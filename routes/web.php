@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\WalletController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,5 +42,11 @@ Route::get('/test', function () {
     return view('testingPage');
 });
 
+//Create Transaction
 Route::view('trans','createTransaction');
 Route::post('trans',[createTransaction::class,'createTrans']);
+
+//Create Wallet
+Route::view('wallet','createWallet')->name('wallet');
+Route::post('cWallet',[WalletController::class,'createWallet']);
+
