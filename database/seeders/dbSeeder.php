@@ -6,6 +6,8 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use Faker\Factory as Faker;
+use App\Models\Wallet;
 
 class dbSeeder extends Seeder
 {
@@ -14,25 +16,41 @@ class dbSeeder extends Seeder
      *
      * @return void
      */
+
+    
     public function run()
     {
+        $faker = Faker::create();
+
+
         //Users
-        for($i=1;$i<10;$i++){
+        for($i=0;$i<5;$i++){
             DB::table('users')->insert([
-                'email'=>Str::random(10).'@outlook.com',
-                'password'=>Hash::make('password'),
-                'tel_no'=>random_int(1000000000, 9999999999),
-                'name'=>Str::random(10),
+                'email'=>$faker->email,
+                'password'=>$faker->password,
+                'tel_no'=>$faker->phoneNumber,
+                'name'=>$faker->name,
                 'is_admin'=>(bool)random_int(0, 1)
             ]);
         }
 
         //Wallets
+        for($i=0; $i<10; $i++){
+            DB::table('wallets')->insert([
+                'name'=>$faker->name,
+                'balance' => $faker->randomFloat(2, 10, 1000000),
+                'initial_balance' => $faker->randomFloat(2, 10, 10000),
+                'type' => $faker->randomElement(
+                    Wallet::WALLET_TYPE,
+                ),
+                'user_id' => rand(1, 5)
+            ]);
+        }
 
 
 
         //TransactionCatergories 0 = Expenses 1 = Income
-        DB::table('TransactionCategories')->insert(array(
+        DB::table('Transaction_Categories')->insert(array(
             array(
             'name' => 'Food & Beverage',
             'type' => 'expense',
@@ -81,26 +99,12 @@ class dbSeeder extends Seeder
 
         //Transactions
         for($i=0; $i<10; $i++){
-            DB::table('transcations')->insert([
-                'amount' => rand(0, 10000) / 100,
+            DB::table('transactions')->insert([
+                'amount' => $faker->randomFloat(2, 10, 10000),
                 'description'=>Str::random(10),
-                // 'walletId'=>rand(0,10),
-                //look into factories? else will very hideous
-                //TO_DO
-                    //fake()->name(),
-                    //Migration create table change
-                    //Models making + factories?
-                    //separate seeders too 
-            ]);
-        }
-
-        //Wallet
-        for($i=0; $i<10; $i++){
-            DB::table('wallet')->insert([
-                'name'=>Str::random(10),
-                'balance' => rand(0, 10000) / 100,
-                'initialBalance' => rand(0, 10000) / 100,
-                'userId' => rand(0, 10)
+                'wallet_id'=>rand(1,10),
+                'category'=> rand(1, 11),
+                'trans_date'=>$faker->dateTime,
             ]);
         }
 

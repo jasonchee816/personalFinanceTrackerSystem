@@ -11,7 +11,7 @@ class transactions extends Model
 
     public $timestamps = false;
 
-    protected $fillable=["amount", "description", "walletId", "category", "transDate"];
+    protected $fillable=["amount", "description", "wallet_id", "category", "trans_date"];
 
     public function getCategory()
     {
