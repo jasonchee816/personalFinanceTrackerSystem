@@ -4,7 +4,7 @@
 
 <div class = container1>
     <h1>Create New Wallet</h1>
-    <form action="cWallet" method="POST">
+    <form action="wallet/form" method="POST">
     @csrf
         <label for="wallet"><i class="fas fa-wallet"></i> Wallet name:</label>
         <input type="text" class="form-control" id="wallet" placeholder="Name" name="wallet">

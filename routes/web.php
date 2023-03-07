@@ -38,15 +38,27 @@ Route::get('/about', function () {
     return view('about');
 });
 
-Route::get('/test', function () {
-    return view('testingPage');
-});
+//WalletPage
+Route::get('/wallets', [WalletController::class, 'showWallet']);
+
 
 //Create Transaction
 Route::view('trans','createTransaction');
 Route::post('trans',[createTransaction::class,'createTrans']);
 
 //Create Wallet
-Route::view('wallet','createWallet')->name('wallet');
-Route::post('cWallet',[WalletController::class,'createWallet']);
+Route::view('createWallet','createWallet')->name('createWallet');
+Route::post('wallet/form',[WalletController::class,'createWallet']);
+
+//Update Wallet
+Route::put('updateWallet', [WalletController::class, 'updateWallet']);
+//Show Wallet
+Route::get('/wallet/{wallet}/edit', [WalletController::class, 'passWalletDetails']);
+
+//Wallet Details
+Route::view('showWalletDetails','showWalletDetails');
+Route::get('/wallet/{wallet}/details',[WalletController::class, 'showWalletDetails']);
+
+//Delete Wallet
+Route::get('/wallet/{id}/delete', [WalletController::class, 'deleteWallet']);
 

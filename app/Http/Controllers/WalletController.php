@@ -24,7 +24,35 @@ class WalletController extends Controller
         $wallet->type = $request->input('category');
         $wallet->save();
 
-        return redirect()->route('wallet')->with('success', 'Wallet created successfully!');
+        return redirect('/wallets');
     }
+
+    function showWallet(){
+        $wallets = Wallet::all();
+        return view('wallet', compact('wallets'));
+    }
+
+    function updateWallet(Request $request){
+        $wallet = Wallet::find($request->id);
+        $wallet->name = $request->input('name');
+        $wallet->balance = $request->input('balance');
+        $wallet->save();
+        return redirect('wallets');
+    }
+
+    function passWalletDetails(Wallet $wallet){
+        return view('editWallet', compact('wallet'));
+    }
+
+    function deleteWallet($id){
+        $data = Wallet::find($id);
+        $data->delete();
+        return redirect("wallets");
+    }
+
+    function showWalletDetails(Wallet $wallet){
+        return view('walletDetails', compact('wallet'));
+    }
+
 }
 
