@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\WalletController;
 
 /*
@@ -44,7 +45,7 @@ Route::get('/wallets', [WalletController::class, 'showWallet']);
 
 //Create Transaction
 Route::view('trans','createTransaction');
-Route::post('trans',[createTransaction::class,'createTrans']);
+Route::post('trans',[TransactionController::class,'createTrans']);
 
 //Create Wallet
 Route::view('createWallet','createWallet')->name('createWallet');

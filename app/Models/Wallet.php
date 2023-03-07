@@ -12,7 +12,7 @@ class Wallet extends Model
     const WALLET_TYPE = ['Savings Account','e-Wallet','Cash Wallet', 'Credit Card'];
 
     public $timestamps = false;
-    protected $fillable = ["name","balance","initialBalance","type"];
+    protected $fillable = ["name","balance","initial_balance","type"];
 
     public function getUser()
     {
