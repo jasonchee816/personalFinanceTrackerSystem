@@ -16,8 +16,8 @@
 
             <select class="form-select mt-2" id="transTypeVal" name="transType">
                 <option disabled selected>Please select</option>
-                <option>Income</option>
-                <option>Expense</option>
+                <option value="income">Income</option>
+                <option value="expense">Expense</option>
             </select>
         </div>
 
@@ -27,26 +27,15 @@
 
                 <select class="form-select mt-2" id="walletVal" name="wallet">
                     <option disabled selected>Please select</option>
-                    <option>Cash</option>
-                    <option>Touch N Go</option>
-                    <option>Card</option>
+                    @foreach($walletData as $wallet)
+                        <option value={{$wallet['id']}}>{{$wallet['name']." (".$wallet['type'].")"}}</option>
+                    @endforeach
                 </select>
             </div>
 
             <div class="categoryInput mb-4">
                 <label for="category"><i class="fa-solid fa-list"></i> Select Category</label><br>
                 <select class="form-select mt-2" id="categoryVal" name="category">
-                    <option disabled selected>Please select</option>
-                    <option>Food & Beverage</option>
-                    <option>Education</option>
-                    <option>Entertainment</option>
-                    <option>Medical</option>
-                    <option>Utilities</option>
-                    <option>Salary</option>
-                    <option>Investment Return</option>
-                    <option>Gifts</option>
-                    <option>Loans</option>
-                    <option>Others</option>
                 </select>
             </div>
 
@@ -79,5 +68,12 @@
 
 </div>
 
+<script>
+    // let walletData =@json($walletData);
+    var categoryData =@json($categoryData);
+
+</script>
 <script src="{{asset('js/createTransaction.js')}}"></script>
+
+
 @stop

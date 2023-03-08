@@ -44,8 +44,8 @@ Route::get('/wallets', [WalletController::class, 'showWallet']);
 
 
 //Create Transaction
-Route::view('trans','createTransaction');
-Route::post('trans',[TransactionController::class,'createTrans']);
+Route::get('createTrans',[TransactionController::class, 'createTransView']);
+Route::post('createTrans',[TransactionController::class,'createTrans']);
 
 //Create Wallet
 Route::view('createWallet','createWallet')->name('createWallet');

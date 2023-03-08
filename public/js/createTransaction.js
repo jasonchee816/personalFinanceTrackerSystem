@@ -1,7 +1,24 @@
 $(document).ready(function () {
-    //show other input only after transtype input
     $("#transTypeVal").change(() => {
+        //show other input only after transtype input
         $(".showAfterType").attr("hidden", false);
+
+        // to show respective category of transaction
+        $("#categoryVal").empty();
+        $("#categoryVal").append(
+            "<option disabled selected>Please select</option>"
+        );
+        for (let i = 0; i < categoryData.length; i++) {
+            if ($("#transTypeVal").val() == categoryData[i]["type"]) {
+                $("#categoryVal").append(
+                    '<option value="' +
+                        categoryData[i]["id"] +
+                        '"> ' +
+                        categoryData[i]["name"] +
+                        "</option>"
+                );
+            }
+        }
     });
 
     //Set dateVal default date as today
