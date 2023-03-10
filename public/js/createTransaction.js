@@ -13,7 +13,9 @@ document.addEventListener("DOMContentLoaded", function (event) {
     }
 
     if (transTypeSelect.value != "") {
+        let oriVal = document.querySelector("#category").value;
         showTypeInput();
+        if (oriVal != "") categorySelect.value = oriVal;
     }
 
     addEventListener();

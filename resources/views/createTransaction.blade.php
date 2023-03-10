@@ -4,7 +4,7 @@
 
 <div class=container1>
     <h1>Add New Transaction</h1>
-    <form action="createTrans" method="POST">
+    <form action="/createTrans" method="POST">
         @csrf
 
         <div class="typeInput mb-4 mt-3">
