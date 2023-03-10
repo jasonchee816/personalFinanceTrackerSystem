@@ -140,3 +140,7 @@ h4 {
         font-size: 150px;
     }
 }
+
+.showAfterType{
+    display: none;
+}

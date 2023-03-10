@@ -21,7 +21,8 @@ Route::get('/', function () {
 });
 
 
-//About Us
+//Test
+Route::view('test','testingPage');
 
 
 //Contact Us

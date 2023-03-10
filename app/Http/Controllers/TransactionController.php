@@ -19,14 +19,13 @@ class TransactionController extends Controller
 
     function createTrans(Request $request){
         $request->validate([
-            'transTypeVal' => 'required', 
-            'walletVal' => 'required', 
-            'categoryVal' => 'required',
-            'amountVal' => 'required|integer',
-            'dateVal' => 'required',
-            'descVal' => 'nullable',
+            'transactionType' => 'required', 
+            'wallet' => 'required', 
+            'category' => 'required',
+            'amount' => ['required','regex: /^\d{0,8}(\.\d{1,2})?$/'],
+            'transactionDate' => 'required',
+            'description' => 'nullable',
         ]);
-        return ("Create Successfully!!");
     }
 }
     
