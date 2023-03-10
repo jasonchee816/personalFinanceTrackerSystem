@@ -11,17 +11,23 @@ document.addEventListener("DOMContentLoaded", function (event) {
         var today = now.getFullYear() + "-" + month + "-" + day;
         dateSelect.value = today;
     }
-    console.log(transTypeSelect.value);
+
     if (transTypeSelect.value != "") {
-        showAfterTypeEleArr = document.querySelectorAll(".showAfterType");
-        for (let i = 0; i < showAfterTypeEleArr.length; i++) {
-            showAfterTypeEleArr[i].style.display = "block";
-        }
+        showTypeInput();
     }
 
-    transTypeSelect.addEventListener("change", () => {
+    addEventListener();
+
+    //Add all event listener
+    function addEventListener() {
+        transTypeSelect.addEventListener("change", () => {
+            showTypeInput();
+        });
+    }
+
+    function showTypeInput() {
         //show other input only after transtype input
-        showAfterTypeEleArr = document.querySelectorAll(".showAfterType");
+        let showAfterTypeEleArr = document.querySelectorAll(".showAfterType");
         for (let i = 0; i < showAfterTypeEleArr.length; i++) {
             showAfterTypeEleArr[i].style.display = "block";
         }
@@ -45,5 +51,5 @@ document.addEventListener("DOMContentLoaded", function (event) {
             }
         }
         categorySelect.innerHTML = toAppend;
-    });
+    }
 });
