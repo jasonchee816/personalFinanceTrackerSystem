@@ -6,12 +6,13 @@
         <div class="col-md-6">
             <h1>Wallet Details</h1>
         </div>
-        <div class="col-md-6 text-md-right">
-        <a href="{{ url('wallet/' . $wallet->id . '/edit') }}" class="btn btn-outline-primary" style="background-color: #fff; color: #007bff;">Edit</a>
-        <a href="{{ url('wallet/' . $wallet->id . '/delete') }}" class="btn btn-outline-danger" style="background-color: #fff; color: #FF0000;">Delete</a>
+        <div class="col-md-6 d-flex justify-content-end">
+            <div class="text-end">
+                <a href="{{ url('wallet/' . $wallet->id . '/edit') }}" class="btn btn-outline-primary" style="background-color: #fff; color: #007bff;">Edit</a>
+                <a href="{{ url('wallet/' . $wallet->id . '/delete') }}" class="btn btn-outline-danger" style="background-color: #fff; color: #FF0000;">Delete</a>
+            </div>
         </div>
     </div>
-
     <div class="row">
         <div class="col-md-4">
             <div class="card mb-4 box-shadow">
@@ -25,7 +26,7 @@
             <div class="card mb-4 box-shadow">
                 <div class="card-body text-right">
                     <h5 class="card-title">Balance:</h5>
-                    <p class="card-text">MYR {{ $wallet->balance }}</p>
+                    <p class="card-text">RM {{ $wallet->balance }}</p>
                 </div>
             </div>
         </div>
