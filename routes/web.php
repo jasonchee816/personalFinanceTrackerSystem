@@ -62,5 +62,5 @@ Route::view('showWalletDetails','showWalletDetails');
 Route::get('/wallet/{wallet}/details',[WalletController::class, 'showWalletDetails']);
 
 //Delete Wallet
-Route::get('/wallet/{id}/delete', [WalletController::class, 'deleteWallet']);
+Route::delete('/wallet/{id}/delete', [WalletController::class, 'deleteWallet']);
 
