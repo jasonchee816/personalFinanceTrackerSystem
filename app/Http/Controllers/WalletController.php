@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 //Model
 use App\Models\Wallet;
+use App\Models\TransactionCategory;
+use App\Models\Transaction;
 
 
 
