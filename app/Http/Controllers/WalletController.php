@@ -21,7 +21,8 @@ class WalletController extends Controller
         $wallet->name = $request->input('wallet');
         $wallet->balance = $request->input('amount');
         $wallet->initial_balance = $request->input('amount');
-        $wallet->user_id = 0;
+        //hardcoded user_id
+        $wallet->user_id = 3;
         $wallet->type = $request->input('category');
         $wallet->save();
 
@@ -30,7 +31,7 @@ class WalletController extends Controller
 
     function showWallet(){
         //$user_id = auth()->id();
-        $wallets = User::find(1)->getWallets;
+        $wallets = User::find(2)->getWallets;
         return view('wallet', compact('wallets'));
     }
 
@@ -42,7 +43,8 @@ class WalletController extends Controller
         return redirect('wallets');
     }
 
-    function passWalletDetails(Wallet $wallet){
+    //to pass the data into the edit wa page.
+    function passWalletDetails($wallet){
         return view('editWallet', compact('wallet'));
     }
 
@@ -52,6 +54,7 @@ class WalletController extends Controller
         return redirect("wallets");
     }
 
+    //to show a specific wallet details
     function showWalletDetails(Wallet $wallet){
         return view('walletDetails', compact('wallet'));
     }
