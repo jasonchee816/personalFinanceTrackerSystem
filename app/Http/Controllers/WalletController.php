@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 //Model
 use App\Models\Wallet;
+use App\Models\TransactionCategory;
+use App\Models\Transaction;
+
+
 
 
 class WalletController extends Controller
@@ -51,8 +55,18 @@ class WalletController extends Controller
     }
 
     function showWalletDetails(Wallet $wallet){
-        return view('walletDetails', compact('wallet'));
+        
+        $transData = Wallet::find($wallet['id'])->getTransactions;
+        $categoryData = TransactionCategory::all();
+        // dd($transData);
+        return view('walletDetails', compact('wallet', 'transData', 'categoryData'));
     }
+
+    // function getTransByWalletId($id){
+    //     $transData = Wallet::find($id)->getTransactions;
+    //     $categoryData = TransactionCategory::all();
+    //     return view("walletDetails", ['walletData'=>$transData, 'categoryData'=>$categoryData]);
+    // }
 
 }
 

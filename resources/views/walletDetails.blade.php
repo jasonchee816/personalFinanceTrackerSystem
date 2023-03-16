@@ -47,5 +47,34 @@
             </div>
         </div>
     </div>
+
+    <div class="transHistory">
+    <table class="table table-lg">
+                <tr class="table-dark">
+                    <th>No.</th>
+                    <th>Amount</th>
+                    <th>Description</th>
+                    <th>Category</th>
+                    <th>Date</th>
+                </tr>
+                @foreach($transData as $data)
+                    @foreach($categoryData as $cat)
+                        @if($cat['id'] == $data['category'])
+                        
+                            {{--if delete cant show cat_name--}}
+                            <!-- {{$cat_name = $cat['name']}} -->
+                        <tr>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{$data['amount']}}</td>
+                            <td>{{$data['description']}}</td>
+                            <td>{{$cat_name}} </td>
+                            <td>{{$data['trans_date']}}</td>
+                        </tr>
+                        
+                        @endif
+                    @endforeach
+                @endforeach
+            </table>
+    </div>
 </div>
 @endsection
