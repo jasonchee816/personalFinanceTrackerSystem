@@ -88,7 +88,7 @@
 <script>
     // let walletData =@json($walletData);
     var categoryData =@json($categoryData);
-
+    var oldCategory = "{{old('category')}}";
 </script>
 <script src="{{asset('js/createTransaction.js')}}"></script>
 

@@ -5,10 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 //Model
 use App\Models\Wallet;
-use App\Models\TransactionCategory;
-use App\Models\Transaction;
 
 
+
+use App\Models\User;
 
 
 class WalletController extends Controller
@@ -32,7 +32,8 @@ class WalletController extends Controller
     }
 
     function showWallet(){
-        $wallets = Wallet::all();
+        //$user_id = auth()->id();
+        $wallets = User::find(1)->getWallets;
         return view('wallet', compact('wallets'));
     }
 

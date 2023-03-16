@@ -9,7 +9,11 @@
         <div class="col-md-6 d-flex justify-content-end">
             <div class="text-end">
                 <a href="{{ url('wallet/' . $wallet->id . '/edit') }}" class="btn btn-outline-primary" style="background-color: #fff; color: #007bff;">Edit</a>
-                <a href="{{ url('wallet/' . $wallet->id . '/delete') }}" class="btn btn-outline-danger" style="background-color: #fff; color: #FF0000;">Delete</a>
+                <form action="{{ url('wallet/' . $wallet->id . '/delete') }}" method="POST" style="display:inline">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-outline-danger" style="background-color: #fff; color: #FF0000;" onclick="return confirm('Are you sure you want to delete this wallet?')">Delete</button>
+                </form>
             </div>
         </div>
     </div>
