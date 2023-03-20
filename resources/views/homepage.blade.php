@@ -92,5 +92,5 @@
     </div>
 </div>
 
-<script src="{{asset('js/testingPage.js')}}"></script>
+<script src="{{asset('js/homepage.js')}}"></script>
 @stop

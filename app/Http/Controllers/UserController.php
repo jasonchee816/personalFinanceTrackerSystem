@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -14,7 +15,7 @@ class UserController extends Controller
         }
     
         // Create New User
-        public function store(Request $request) {
+        public function storeUser(Request $request) {
             $formFields = $request->validate([
                 'name' => ['required', 'min:3'],
                 'email' => ['required', 'email', Rule::unique('users', 'email')],
@@ -28,14 +29,14 @@ class UserController extends Controller
             $user = User::create($formFields);
     
             // Login
-            auth()->login($user);
+            Auth::login($user);
     
             return redirect('/')->with('message', 'User created and logged in');
         }
     
         // Logout User
         public function logout(Request $request) {
-            auth()->logout();
+            Auth::logout();
     
             $request->session()->invalidate();
             $request->session()->regenerateToken();
@@ -45,21 +46,44 @@ class UserController extends Controller
         }
     
         // Show Login Form
-        public function login() {
+        public function userLogin() {
             return view('users.login');
+        }
+
+        // Show Admin Login Form
+        public function adminLogin() {
+            return view('admin.login');
         }
     
         // Authenticate User
-        public function authenticate(Request $request) {
+        public function authenticateUser(Request $request) 
+        {
             $formFields = $request->validate([
                 'email' => ['required', 'email'],
                 'password' => 'required'
             ]);
     
-            if(auth()->attempt($formFields)) {
+            if(auth()->attempt(['email' => $formFields->email, 'password' => $formFields->password, 'is_admin'=> 0])) {
                 $request->session()->regenerate();
     
-                return redirect('/')->with('message', 'You are now logged in!');
+                return redirect()->intended('/');
+            }
+    
+            return back()->withErrors(['email' => 'Invalid Credentials'])->onlyInput('email');
+        }
+
+        // Authenticate Admin
+        public function authenticateAdmin(Request $request) 
+        {
+            $formFields = $request->validate([
+                'email' => ['required', 'email'],
+                'password' => 'required'
+            ]);
+    
+            if(auth()->attempt(['email' => $formFields->email, 'password' => $formFields->password, 'is_admin'=> 1])) {
+                $request->session()->regenerate();
+    
+                return redirect()->intended('/');
             }
     
             return back()->withErrors(['email' => 'Invalid Credentials'])->onlyInput('email');
