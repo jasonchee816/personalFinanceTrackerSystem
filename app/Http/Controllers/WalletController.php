@@ -40,6 +40,10 @@ class WalletController extends Controller
     }
 
     function updateWallet(Request $request){
+        $request->validate([
+            'wallet' => 'required',
+            'balance' => 'required|integer',
+        ]);
         $wallet = Wallet::find($request->id);
         $wallet->name = $request->input('name');
         $wallet->balance = $request->input('balance');
