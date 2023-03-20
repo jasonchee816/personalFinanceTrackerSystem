@@ -43,7 +43,6 @@ Route::get('/about', function () {
 //WalletPage
 Route::get('/wallets', [WalletController::class, 'showWallet']);
 
-
 //Create Transaction
 Route::get('createTrans',[TransactionController::class, 'createTransView']);
 Route::post('createTrans',[TransactionController::class,'createTrans']);
@@ -62,5 +61,8 @@ Route::view('showWalletDetails','showWalletDetails');
 Route::get('/wallet/{wallet}/details',[WalletController::class, 'showWalletDetails']);
 
 //Delete Wallet
-Route::delete('/wallet/{id}/delete', [WalletController::class, 'deleteWallet']);
+Route::delete('/task/{id}/delete', [WalletController::class, 'deleteWallet']);
 
+//Register
+Route::view('register','register');
+Route::post('register/form',[UserController::class,'createUser']);

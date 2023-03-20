@@ -36,7 +36,7 @@ class WalletController extends Controller
 
     function showWallet(){
         //$user_id = auth()->id();
-        $wallets = User::find(2)->getWallets;
+        $wallets = User::find(1)->getWallets;
         return view('wallet', compact('wallets'));
     }
 
@@ -48,8 +48,8 @@ class WalletController extends Controller
         return redirect('wallets');
     }
 
-    //to pass the data into the edit wa page.
-    function passWalletDetails($wallet){
+    //to pass the data into the edit wallet page. With the Wallet, it will automatically find the relevant wallet
+    function passWalletDetails(Wallet $wallet){
         return view('editWallet', compact('wallet'));
     }
 
@@ -61,7 +61,7 @@ class WalletController extends Controller
 
     //to show a specific wallet details
     function showWalletDetails(Wallet $wallet){
-        
+
         $transData = Wallet::find($wallet['id'])->getTransactions;
         $categoryData = TransactionCategory::all();
         // dd($transData);
