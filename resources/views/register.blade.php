@@ -25,7 +25,11 @@
         <span style="color:red">@error('password'){{$message}}@enderror</span>
     </div>
 
-
+    <div class="telNoInput mb-4">
+        <label id="telNo" ><i class="fa-solid key"></i>Telephone Number</label>
+        <input type="telNo" class="form-control" id="telNo" placeholder="Telephone Number" name="telNo">
+        <span style="color:red">@error('telNo'){{$message}}@enderror</span>
+    </div>
 
     <div class = "d-grid gap-2 col-3 mx-auto">
         <button type="submit" class="btn btn-primary">Register</button>

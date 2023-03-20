@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\WalletController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,24 +22,13 @@ Route::get('/', function () {
 });
 
 
-//Test
-Route::view('test','testingPage');
+//Login
+Route::get('login',[UserController::class,'userLogin']);
+Route::post('login',[UserController::class,'authenticateUser']);
 
-
-//Contact Us
-Route::get('/contact', function () {
-    return view('contact_us');
-});
-
-//FAQ
-Route::get('/faq', function () {
-    return view('faq');
-});
-
-//About
-Route::get('/about', function () {
-    return view('about');
-});
+//Register
+Route::get('register',[UserController::class,'create']);
+Route::post('register',[UserController::class,'storeUser']);
 
 //WalletPage
 Route::get('/wallets', [WalletController::class, 'showWallet']);
@@ -63,11 +53,6 @@ Route::get('/wallet/{wallet}/details',[WalletController::class, 'showWalletDetai
 //Delete Wallet
 Route::delete('/task/{id}/delete', [WalletController::class, 'deleteWallet']);
 
-<<<<<<< HEAD
-//Register
-Route::view('register','register');
-Route::post('register/form',[UserController::class,'createUser']);
-=======
+
 // Homepage after user login
 Route::view('/homepage','userHomepage');
->>>>>>> ec31a173ccde16de1ddc542fa629c9c5030ba325
