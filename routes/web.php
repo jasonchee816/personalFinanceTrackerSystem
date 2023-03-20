@@ -17,9 +17,10 @@ use App\Http\Controllers\UserController;
 */
 
 //Homepage
-Route::get('/', function () {
-    return view('homepage');
-});
+// Route::get('/', function () {
+//     return view('homepage');
+// });
+Route::get('/',[UserController::class, 'showHomepageDetails']);
 
 
 //Login
@@ -31,14 +32,14 @@ Route::get('register',[UserController::class,'create']);
 Route::post('register',[UserController::class,'storeUser']);
 
 //WalletPage
-Route::get('/wallets', [WalletController::class, 'showWallet']);
+Route::get('/wallets', [WalletController::class, 'showWallet'])->middleware('auth.basic');
 
 //Create Transaction
 Route::get('createTrans',[TransactionController::class, 'createTransView'])->middleware('auth.basic'); 
 Route::post('createTrans',[TransactionController::class,'createTrans']);
 
 //Create Wallet
-Route::view('createWallet','createWallet')->name('createWallet');
+Route::view('createWallet','createWallet')->name('createWallet')->middleware('auth.basic');
 Route::post('wallet/form',[WalletController::class,'createWallet']);
 
 //Update Wallet
@@ -54,6 +55,6 @@ Route::delete('/task/{id}/delete', [WalletController::class, 'deleteWallet']);
 
 
 // Homepage after user login
-Route::get('/homepage',[WalletController::class,'showHomepageDetails']);
+// Route::get('/homepage',[WalletController::class,'showHomepageDetails']);
 
 Route::get('logout', [UserController::class,'logout']);

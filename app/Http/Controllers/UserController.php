@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use App\Models\User;
+use App\Models\Wallet;
+use App\Models\Transaction;
 use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
@@ -88,5 +90,16 @@ class UserController extends Controller
             }
     
             return back()->withErrors(['email' => 'Invalid Credentials'])->onlyInput('email');
+        }
+
+        // Show related homepage
+        function showHomepageDetails(){
+            if(Auth::check()){
+                $wallets = auth()->user()->getWallets()->get();
+                $wallets_id = auth()->user()->getWallets()->pluck('wallets.id');
+                $transactions = Transaction::whereIn('wallet_id', $wallets_id)->get();
+                return view('userHomepage', compact('wallets', 'transactions'));
+            }
+            return view('homepage');
         }
 }

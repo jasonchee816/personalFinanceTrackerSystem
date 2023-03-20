@@ -7,7 +7,7 @@
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
     @include('includes/header')
 
-    <div class="mt-5 vh-100">
+    <div class="mt-5">
         @yield('content')
     </div>
 

@@ -5,33 +5,46 @@
     <h1>Hi, {{auth()->user()->name}} </h1>
 </div>
 <div class="row text-center">
-    <div class="col-md-4 ">
+    <div class="col-md-4 mt-3">
         <h1>Wallets</h1>
+        @if($wallets->count() == 0)
+        <span>
+            You have not yet registered any wallets.
+        </span>
+        @endif
         @foreach($wallets as $wallet)
         <a href="{{ url('wallet/' . $wallet->id . '/details') }}" class="mb-4 btn col-10">
             <div class="card box-shadow p-2 walletBtn text-start" style="background-color: #406E8E;">
                 <div class="card-body">
                     <h5 class="card-title text-white" style="margin-bottom: 0.5rem;">{{ $wallet->name }}</h5>
-                    <h6 class="card-subtitle mb-2 text-white"><i class="fas fa-coins"></i> RM {{ $wallet->balance }}</h6>
+                    <h6 class="card-subtitle mb-2 text-white"><i class="fas fa-coins"></i> RM {{ $wallet->balance }}
+                    </h6>
                 </div>
             </div>
         </a>
         @endforeach
     </div>
-    <div class="col-md-4">
-        <h1>Transactions</h1>
+    <div class="col-md-4 mt-3">
+        <h1>Recent Transactions</h1>
+        @if($transactions->count() == 0)
+        <span>
+            You have no recent transactions.
+        </span>
+        @endif
         @foreach($transactions as $transaction)
         <a href="{{ url('wallet/' . $wallet->id . '/details') }}" class="mb-4 btn col-10">
             <div class="card box-shadow p-2 walletBtn text-start" style="background-color: #406E8E;">
                 <div class="card-body">
-                    <h5 class="card-title text-white" style="margin-bottom: 0.5rem;">{{date('d-m-Y', strtotime($transaction->trans_date));}}</h5>
-                    <h6 class="card-subtitle mb-2 text-white"><i class="fas fa-coins"></i> RM {{ $transaction->amount }}</h6>
+                    <h5 class="card-title text-white" style="margin-bottom: 0.5rem;">{{date('d-m-Y',
+                        strtotime($transaction->trans_date));}}</h5>
+                    <h6 class="card-subtitle mb-2 text-white"><i class="fas fa-coins"></i> RM {{ $transaction->amount }}
+                    </h6>
                 </div>
             </div>
         </a>
         @endforeach
     </div>
-    <div class="col-md-4 pt-5">
+    <div class="col-md-4 mt-3 pt-5">
         <a href="createWallet" class="mb-4 btn col-10">
             <div class="card box-shadow p-2 walletBtn text-start py-5" style="background-color: #406E8E;">
                 <div class="card-body">
