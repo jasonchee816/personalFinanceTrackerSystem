@@ -20,6 +20,11 @@ class User extends Authenticatable
     public $timestamps = false;
     protected $fillable = ['email','password','tel_no','name','is_admin'];
 
+    protected $hidden = [
+        'password',
+        // 'remember_token',
+    ];
+
     public function getWallets()
     {
         return $this->hasMany(Wallet::class);
