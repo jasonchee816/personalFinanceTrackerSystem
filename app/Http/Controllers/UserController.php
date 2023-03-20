@@ -16,18 +16,19 @@ class UserController extends Controller
     
         // Create New User
         public function storeUser(Request $request) {
-            $formFields = $request->validate([
+            $request->validate([
                 'name' => ['required', 'min:3'],
                 'email' => ['required', 'email', Rule::unique('users', 'email')],
-                'password' => 'required|confirmed|min:6'
+                'password' => 'required|min:6',
+                'tel_no'=> 'required'
             ]);
-    
+            $data = $request->all();
+            $data['is_admin']=0;
             // Hash Password
-            $formFields['password'] = bcrypt($formFields['password']);
+            $data['password'] = bcrypt($data['password']);
     
             // Create User
-            $user = User::create($formFields);
-    
+            $user = User::create($data);
             // Login
             Auth::login($user);
     
@@ -63,7 +64,7 @@ class UserController extends Controller
                 'password' => 'required'
             ]);
     
-            if(auth()->attempt(['email' => $formFields->email, 'password' => $formFields->password, 'is_admin'=> 0])) {
+            if(auth()->attempt(['email' => $request->email, 'password' => $request->password, 'is_admin'=> 0])) {
                 $request->session()->regenerate();
     
                 return redirect()->intended('/');
