@@ -63,6 +63,11 @@ Route::get('/wallet/{wallet}/details',[WalletController::class, 'showWalletDetai
 //Delete Wallet
 Route::delete('/task/{id}/delete', [WalletController::class, 'deleteWallet']);
 
+<<<<<<< HEAD
 //Register
 Route::view('register','register');
 Route::post('register/form',[UserController::class,'createUser']);
+=======
+// Homepage after user login
+Route::view('/homepage','userHomepage');
+>>>>>>> ec31a173ccde16de1ddc542fa629c9c5030ba325
