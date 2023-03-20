@@ -27,20 +27,23 @@ class WalletController extends Controller
         $wallet->balance = $request->input('amount');
         $wallet->initial_balance = $request->input('amount');
         //hardcoded user_id
-        $wallet->user_id = 3;
+        $wallet->user_id = auth()->id();
         $wallet->type = $request->input('category');
         $wallet->save();
-
         return redirect('/wallets');
     }
 
     function showWallet(){
-        //$user_id = auth()->id();
-        $wallets = User::find(1)->getWallets;
+        $user_id = auth()->id();
+        $wallets = User::find($user_id)->getWallets;
         return view('wallet', compact('wallets'));
     }
 
     function updateWallet(Request $request){
+        $request->validate([
+            'wallet' => 'required',
+            'balance' => 'required|integer',
+        ]);
         $wallet = Wallet::find($request->id);
         $wallet->name = $request->input('name');
         $wallet->balance = $request->input('balance');

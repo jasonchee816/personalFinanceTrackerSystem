@@ -64,7 +64,7 @@
                 @foreach($transData as $data)
                     @foreach($categoryData as $cat)
                         @if($cat['id'] == $data['category'])
-                        
+
                             {{--if delete cant show cat_name--}}
                             <!-- {{$cat_name = $cat['name']}} -->
                         <tr>
@@ -74,7 +74,7 @@
                             <td>{{$cat_name}} </td>
                             <td>{{$data['trans_date']}}</td>
                         </tr>
-                        
+
                         @endif
                     @endforeach
                 @endforeach
