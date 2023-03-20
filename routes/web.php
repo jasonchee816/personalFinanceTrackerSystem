@@ -64,3 +64,5 @@ Route::get('/wallet/{wallet}/details',[WalletController::class, 'showWalletDetai
 //Delete Wallet
 Route::delete('/wallet/{id}/delete', [WalletController::class, 'deleteWallet']);
 
+// Homepage after user login
+Route::view('/homepage','userHomepage');
