@@ -10,12 +10,11 @@ use App\Models\TransactionCategory;
 
 class TransactionController extends Controller
 {
-    function createTransView(Request $request){
-        $walletData = Wallet::where('user_id', $request->id)->get();
+    function createTransView(){
+        $walletData = Wallet::where('user_id', auth()->id())->get();
         $categoryData = TransactionCategory::all();
         return view("createTransaction", ['walletData'=>$walletData, 'categoryData'=>$categoryData]);
     }
-
 
     function createTrans(Request $request){
         $request->validate([
@@ -26,6 +25,18 @@ class TransactionController extends Controller
             'transactionDate' => 'required',
             'description' => 'nullable',
         ]);
+
+        $transaction = new Transaction();
+        $transaction->wallet_id = $request->input('wallet');
+        $transaction->category = $request->input('category');
+        $transaction->amount = $request->input('amount');
+
+        // $date = Carbon::now();
+        $transaction->trans_date = $request->input('transactionDate');
+        $transaction->description = $request->input('description');
+
+        $transaction->save();
+        return redirect('/homepage');
     }
 }
     

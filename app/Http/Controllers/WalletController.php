@@ -76,6 +76,12 @@ class WalletController extends Controller
     //     $categoryData = TransactionCategory::all();
     //     return view("walletDetails", ['walletData'=>$transData, 'categoryData'=>$categoryData]);
     // }
-
+    function showHomepageDetails(){
+        $user_id = auth()->id();
+        $wallets = auth()->user()->getWallets()->get();
+        $wallets_id = auth()->user()->getWallets()->pluck('wallets.id');
+        $transactions = Transaction::whereIn('wallet_id', $wallets_id)->get();
+        return view('userHomepage', compact('wallets', 'transactions'));
+    }
 }
 

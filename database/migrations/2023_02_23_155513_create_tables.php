@@ -47,7 +47,7 @@ class CreateTables extends Migration
         Schema::create('Transactions', function (Blueprint $table) {
             $table->increments('id');
             $table->double('amount');
-            $table->string('description');
+            $table->string('description')->nullable();
             $table->integer('wallet_id');
             $table->foreign('wallet_id')->references('id')->on('Wallets');
             $table->integer('category');
