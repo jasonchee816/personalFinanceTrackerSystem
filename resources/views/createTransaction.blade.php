@@ -36,11 +36,11 @@
                 <select class="form-select mt-2" id="wallet" name="wallet">
                     <option disabled selected>Please select</option>
                     @foreach($walletData as $wallet)
-                        @if (old('wallet') == $wallet->id)
-                            <option selected value={{$wallet['id']}}>{{$wallet['name']." (".$wallet['type'].")"}}</option>
-                        @else
-                            <option value={{$wallet['id']}}>{{$wallet['name']." (".$wallet['type'].")"}}</option>
-                        @endif
+                    @if (old('wallet') == $wallet->id)
+                    <option selected value={{$wallet['id']}}>{{$wallet['name']." (".$wallet['type'].")"}}</option>
+                    @else
+                    <option value={{$wallet['id']}}>{{$wallet['name']." (".$wallet['type'].")"}}</option>
+                    @endif
                     @endforeach
                 </select>
                 <span style="color:red">@error('wallet'){{$message}}@enderror</span>
@@ -55,14 +55,15 @@
 
             <div class="amountInput mb-4">
                 <label for="amount"><i class="fa-solid fa-money-bill"></i> Amount (RM)</label><br>
-                <input type="text" class="form-control mt-2" id="amount" placeholder="0.00" name="amount" value={{old('amount')}}>
+                <input type="text" class="form-control mt-2" id="amount" placeholder="0.00" name="amount"
+                    value={{old('amount')}}>
                 <span style="color:red">@error('amount'){{$message}}@enderror</span>
             </div>
 
             <div class="dateInput mb-4">
                 <label for="date"><i class="fa-solid fa-calendar-days"></i> Select Date</label><br>
-                <input type="date" class="form-control mt-2" id="transactionDate" name="transactionDate" onfocus="this.showPicker()" 
-                    value={{old('transactionDate')}} >
+                <input type="date" class="form-control mt-2" id="transactionDate" name="transactionDate"
+                    onfocus="this.showPicker()" value={{old('transactionDate')}}>
                 <span style="color:red">@error('transactionDate'){{$message}}@enderror</span>
             </div>
             <div class="descInput mb-4">
@@ -70,7 +71,7 @@
                 <input type="text" class="form-control mt-2" id="description" placeholder="Dinner with Family, etc. "
                     name="description" value={{old('description')}}>
                 <span style="color:red">@error('description'){{$message}}@enderror</span>
-                
+
             </div>
         </div>
 

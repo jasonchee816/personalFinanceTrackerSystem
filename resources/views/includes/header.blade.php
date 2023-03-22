@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-md navbar-dark fixed-top p-0" aria-label="Third navbar example">
     <div class="container-fluid">
-        <a class="navbar-brand ms-5 ps-5 py-0" href="/">LMEO</a>
+        <a class="navbar-brand ms-3 ms-md-5 ps-5 py-0" href="/#home">LMEO</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample03"
             aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -10,22 +10,22 @@
         <div class="collapse navbar-collapse navbar-right me-xxl-5  pe-xxl-5" id="navbarsExample03">
             <ul class="navbar-nav ms-auto mb-2 mb-sm-0">
                 <li class="nav-item">
-                    <a class="nav-link px-3 ps-5" href="/">HOME</a>
+                    <a class="nav-link px-3 ps-5 ps-md-3 ms-5 ms-md-0" href="/#home">HOME</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link px-3" href="#about">ABOUT</a>
+                    <a class="nav-link px-3 ps-5 ps-md-3 ms-5 ms-md-0" href="/#about">ABOUT</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link px-3" href="#faq">FAQ</a>
+                    <a class="nav-link px-3 ps-5 ps-md-3 ms-5 ms-md-0" href="/#faq">FAQ</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link px-3" href="#contact">CONTACT</a>
+                    <a class="nav-link px-3 ps-5 ps-md-3 ms-5 ms-md-0" href="/#contact">CONTACT</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link px-3" href="login">LOGIN</a>
+                    <a class="nav-link px-3 ps-5 ps-md-3 ms-5 ms-md-0" href="login">LOGIN</a>
                 </li>
                 <li class="nav-item pe-5 me-5">
-                    <a class="nav-link" href="register">REGISTER</a>
+                    <a class="nav-link ps-5 ps-md-3 ms-5 ms-md-0" href="register">REGISTER</a>
                 </li>
             </ul>
         </div>
@@ -35,19 +35,19 @@
         <div class="collapse navbar-collapse navbar-right me-xxl-5  pe-xxl-5" id="navbarsExample03">
             <ul class="navbar-nav ms-auto mb-2 mb-sm-0">
                 <li class="nav-item">
-                    <a class="nav-link px-3 ps-5" href="/">HOME</a>
+                    <a class="nav-link px-3 ps-5 ps-md-3 ms-5 ms-md-0" href="/#home">HOME</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link px-3" href="wallets">WALLETS</a>
+                    <a class="nav-link px-3 ps-5 ps-md-3 ms-5 ms-md-0" href="wallets">WALLETS</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link px-3" href="createTrans">TRANSACTIONS</a>
+                    <a class="nav-link px-3 ps-5 ps-md-3 ms-5 ms-md-0" href="createTrans">TRANSACTIONS</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link px-3" href="/">PROFILE</a>
+                    <a class="nav-link px-3 ps-5 ps-md-3 ms-5 ms-md-0" href="profile">PROFILE</a>
                 </li>
-                <li class="nav-item ps-3 pe-5 me-5">
-                    <a class="nav-link" href="" onclick="event.preventDefault();
+                <li class="nav-item pe-5 me-5">
+                    <a class="nav-link ps-5 ps-md-3 ms-5 ms-md-0" href="" onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">LOGOUT</a>
                 </li>
                 <form id="logout-form" action="logout" method="GET" style="display: none;">
@@ -60,24 +60,3 @@
 
     </div>
 </nav>
-<!-- <nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#myPage">LMEO</a>
-        </div>
-        <div class="collapse navbar-collapse" id="myNavbar">
-            <ul class="nav navbar-nav navbar-right ">
-                <li><a href="#home">HOME</a></li>
-                <li><a href="#about">ABOUT</a></li>
-                <li><a href="#services">FAQ</a></li>
-                <li><a href="#contact">CONTACT</a></li>
-                <li><a href="#">LOGIN</a></li>
-            </ul>
-        </div>
-    </div>
-</nav> -->

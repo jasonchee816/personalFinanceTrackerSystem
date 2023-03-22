@@ -1,7 +1,7 @@
 @extends('layouts.default')
 
 @section('content')
-<div class="container0">
+<div id="home" class="container0">
     <h1>LMEO COMPANY</h1>
     <h3>Personal Finance Tracker</h3>
 </div>

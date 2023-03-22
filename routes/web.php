@@ -24,7 +24,7 @@ Route::get('/',[UserController::class, 'showHomepageDetails']);
 
 
 //Login
-Route::get('login',[UserController::class,'userLogin']);
+Route::get('login',[UserController::class,'userLogin'])->name('login');
 Route::post('login',[UserController::class,'authenticateUser']);
 
 //Register
@@ -32,23 +32,23 @@ Route::get('register',[UserController::class,'create']);
 Route::post('register',[UserController::class,'storeUser']);
 
 //WalletPage
-Route::get('/wallets', [WalletController::class, 'showWallet'])->middleware('auth.basic');
+Route::get('/wallets', [WalletController::class, 'showWallet'])->middleware('auth');
 
 //Create Transaction
-Route::get('createTrans',[TransactionController::class, 'createTransView'])->middleware('auth.basic'); 
+Route::get('createTrans',[TransactionController::class, 'createTransView'])->middleware('auth'); 
 Route::post('createTrans',[TransactionController::class,'createTrans']);
 
 //Create Wallet
-Route::view('createWallet','createWallet')->name('createWallet')->middleware('auth.basic');
+Route::view('createWallet','createWallet')->name('createWallet')->middleware('auth');
 Route::post('wallet/form',[WalletController::class,'createWallet']);
 
 //Update Wallet
-Route::get('/wallet/{wallet}/edit', [WalletController::class, 'passWalletDetails'])->middleware('auth.basic');
+Route::get('/wallet/{wallet}/edit', [WalletController::class, 'passWalletDetails'])->middleware('auth');
 Route::put('updateWallet', [WalletController::class, 'updateWallet']);
 
 //Wallet Details
 Route::view('showWalletDetails','showWalletDetails');
-Route::get('/wallet/{wallet}/details',[WalletController::class, 'showWalletDetails'])->middleware('auth.basic');
+Route::get('/wallet/{wallet}/details',[WalletController::class, 'showWalletDetails'])->middleware('auth');
 
 //Delete Wallet
 Route::delete('/task/{id}/delete', [WalletController::class, 'deleteWallet']);

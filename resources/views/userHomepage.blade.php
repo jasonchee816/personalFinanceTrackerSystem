@@ -1,7 +1,7 @@
 @extends('layouts.default')
 
 @section('content')
-<div class="container0">
+<div id="home" class="container0">
     <h1>Hi, {{auth()->user()->name}} </h1>
 </div>
 <div class="row text-center">
