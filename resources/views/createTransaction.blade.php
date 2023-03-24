@@ -16,7 +16,7 @@
                 @else
                 <option disabled value="">Please select</option>
                 @endif
-                @if (old('transactionType') == 'income')
+                @if (old('transactionType') == 'income') 
                 <option value='income' selected>Income</option>
                 @else
                 <option value="income">Income</option>
@@ -87,7 +87,6 @@
 </div>
 
 <script>
-    // let walletData =@json($walletData);
     var categoryData =@json($categoryData);
     var oldCategory = "{{old('category')}}";
 </script>
