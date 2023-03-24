@@ -58,3 +58,13 @@ Route::delete('/task/{id}/delete', [WalletController::class, 'deleteWallet']);
 // Route::get('/homepage',[WalletController::class,'showHomepageDetails']);
 
 Route::get('logout', [UserController::class,'logout']);
+
+
+//JS
+
+//JL
+
+//YT
+
+//WL
+
