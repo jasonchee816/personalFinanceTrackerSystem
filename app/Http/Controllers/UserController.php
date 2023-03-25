@@ -129,22 +129,22 @@ class UserController extends Controller
         }
 
         function getProfile(){
-            $userId = Auth::id();
-
-            $data = User::find($userId);
-            // dd($data);
-
-            return view('profile', ['user' => $data]);
+            // $userId = Auth::id();
+            // $data = User::find($userId);
+            // // dd($data);
+            // return view('profile', ['user' => $data]);
+            $user = Auth::user();
+            return view('profile', ['user' => $user]);
         }
 
         function editProfile(Request $request){
             $request->validate([
                 'name' => ['required', 'min:3'],
-                'email' => ['required', 'email', Rule::unique('users', 'email')],
+                'email' => ['required', 'email', Rule::unique('users', 'email')->ignore(Auth::id(), 'id')],
                 'tel_no'=> 'required'
             ]);
-
-            $data= User::find(Auth::id());
+            // $data= User::find(Auth::id());
+            $data= Auth::user();
             $data->name = $request->name;
             $data->email = $request->email;
             $data->tel_no = $request->tel_no;
@@ -152,4 +152,5 @@ class UserController extends Controller
             return redirect("profile")->with('message', 'Profile update successfully.');
 
         }
+
 }

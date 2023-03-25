@@ -19,7 +19,7 @@ class WalletController extends Controller
         $request->validate([
             'wallet' => 'required',
             'category' => 'required',
-            'amount' => 'required|integer',
+            'amount' => ['required','regex: /^\d{0,8}(\.\d{1,2})?$/'],
         ]);
 
         $wallet = new Wallet();
@@ -42,7 +42,7 @@ class WalletController extends Controller
     function updateWallet(Request $request){
         $request->validate([
             'wallet' => 'required',
-            'balance' => 'required|integer',
+            'balance' => ['required','regex: /^\d{0,8}(\.\d{1,2})?$/'],
         ]);
         $wallet = Wallet::find($request->id);
         $wallet->name = $request->input('name');
