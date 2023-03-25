@@ -16,7 +16,7 @@ class TransactionCategory extends Model
 
     public function getTransactions()
     {
-        return $this->belongsTo(Transaction::class);
+        return $this->hasMany(Transaction::class);
     }
 
 }

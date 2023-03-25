@@ -13,7 +13,7 @@ class UserController extends Controller
 {
         // Show Register/Create Form
         public function create() {
-            return view('register');
+            return view('users.register');
         }
     
         // Create New User
@@ -36,6 +36,26 @@ class UserController extends Controller
     
             return redirect('/')->with('message', 'User created and logged in');
         }
+
+        // Create New User
+        public function storeAdmin(Request $request) {
+            $request->validate([
+                'name' => ['required', 'min:3'],
+                'email' => ['required', 'email', Rule::unique('users', 'email')],
+                'password' => 'required|min:6 | confirmed',
+                'tel_no'=> 'required'
+            ]);
+            $data = $request->all();
+            $data['is_admin']=1;
+            // Hash Password
+            $data['password'] = bcrypt($data['password']);
+
+            // Create User
+            $user = User::create($data);
+            // Login
+            Auth::login($user);
+            return redirect('/')->with('message', 'User created and logged in');
+        }
     
         // Logout User
         public function logout(Request $request) {
@@ -55,7 +75,12 @@ class UserController extends Controller
 
         // Show Admin Login Form
         public function adminLogin() {
-            return view('admin.login');
+            return view('admins.login');
+        }
+
+        // Show Admin Register Form
+        public function adminRegister() {
+            return view('admins.register');
         }
     
         // Authenticate User
@@ -83,7 +108,7 @@ class UserController extends Controller
                 'password' => 'required'
             ]);
     
-            if(auth()->attempt(['email' => $formFields->email, 'password' => $formFields->password, 'is_admin'=> 1])) {
+            if(auth()->attempt(['email' => $formFields['email'], 'password' => $formFields['password'], 'is_admin'=> 1])) {
                 $request->session()->regenerate();
     
                 return redirect()->intended('/');
