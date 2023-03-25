@@ -54,6 +54,11 @@ Route::get('/wallet/{wallet}/details',[WalletController::class, 'showWalletDetai
 //Delete Wallet
 Route::delete('/task/{id}/delete', [WalletController::class, 'deleteWallet']);
 
+//Profile
+Route::get('profile',[UserController::class, 'getProfile'])->middleware('auth');
+Route::post('editProfile', [UserController::class, 'editProfile']);
+Route::delete('/deleteProfile', [UserController::class, 'deleteProfile']);
+
 
 // Homepage after user login
 // Route::get('/homepage',[WalletController::class,'showHomepageDetails']);

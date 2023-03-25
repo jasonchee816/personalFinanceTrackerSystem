@@ -127,4 +127,29 @@ class UserController extends Controller
             }
             return view('homepage');
         }
+
+        function getProfile(){
+            $userId = Auth::id();
+
+            $data = User::find($userId);
+            // dd($data);
+
+            return view('profile', ['user' => $data]);
+        }
+
+        function editProfile(Request $request){
+            $request->validate([
+                'name' => ['required', 'min:3'],
+                'email' => ['required', 'email', Rule::unique('users', 'email')],
+                'tel_no'=> 'required'
+            ]);
+
+            $data= User::find(Auth::id());
+            $data->name = $request->name;
+            $data->email = $request->email;
+            $data->tel_no = $request->tel_no;
+            $data->save();
+            return redirect("profile")->with('message', 'Profile update successfully.');
+
+        }
 }

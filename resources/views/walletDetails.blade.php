@@ -61,14 +61,13 @@
                     <th>Category</th>
                     <th>Date</th>
                 </tr>
-                @foreach($transData as $data)
+                @foreach($transData as $key=>$data)
                     @foreach($categoryData as $cat)
                         @if($cat['id'] == $data['category'])
 
-                            {{--if delete cant show cat_name--}}
                             <!-- {{$cat_name = $cat['name']}} -->
                         <tr>
-                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $key+1 }}</td>
                             <td>{{$data['amount']}}</td>
                             <td>{{$data['description']}}</td>
                             <td>{{$cat_name}} </td>
