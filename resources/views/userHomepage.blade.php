@@ -2,6 +2,11 @@
 
 @section('content')
 <div id="home" class="container0">
+    @if(session()->has('message'))
+    <div class="alert alert-success">
+        {{ session()->get('message') }}
+    </div>
+    @endif
     <h1>Hi, {{auth()->user()->name}} </h1>
 </div>
 <div class="row text-center">

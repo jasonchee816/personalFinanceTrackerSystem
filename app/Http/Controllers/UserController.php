@@ -21,14 +21,14 @@ class UserController extends Controller
             $request->validate([
                 'name' => ['required', 'min:3'],
                 'email' => ['required', 'email', Rule::unique('users', 'email')],
-                'password' => 'required|min:6',
+                'password' => 'required|min:6 | confirmed',
                 'tel_no'=> 'required'
             ]);
             $data = $request->all();
             $data['is_admin']=0;
             // Hash Password
             $data['password'] = bcrypt($data['password']);
-    
+
             // Create User
             $user = User::create($data);
             // Login
