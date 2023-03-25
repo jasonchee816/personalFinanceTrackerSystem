@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\WalletController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,7 +36,7 @@ Route::post('register',[UserController::class,'storeUser']);
 Route::get('/wallets', [WalletController::class, 'showWallet'])->middleware('auth');
 
 //Create Transaction
-Route::get('createTrans',[TransactionController::class, 'createTransView'])->middleware('auth'); 
+Route::get('createTrans',[TransactionController::class, 'createTransView'])->middleware('auth');
 Route::post('createTrans',[TransactionController::class,'createTrans']);
 
 //Create Wallet
@@ -65,6 +66,15 @@ Route::get('logout', [UserController::class,'logout']);
 //JL
 
 //YT
+Route::get('adminHomepage',[AdminController::class,'showAdminHomepage']);
+//Create
+Route::get('createCategory',[AdminController::class,'showCreateCategory']);
+Route::post('createCategory/form',[AdminController::class,'creataTransactionCategory']);
+//Delete
+Route::get('deleteCategory/{id}',[AdminController::class,'DeleteTransactionCategory']);
+//Update
+Route::get('passCategory/{id}', [AdminController::class, 'passTransactionCategory']);
+Route::put('updateCategory', [AdminController::class, 'UpdateTransactionCategory']);
 
 //WL
 

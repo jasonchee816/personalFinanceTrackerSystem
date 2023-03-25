@@ -8,7 +8,7 @@
     @csrf
     <div class="walletNameInput mb-4">
         <label for="wallet"><i class="fas fa-wallet"></i> Wallet name</label>
-        <input type="text" class="form-control" id="wallet" placeholder="Name" name="wallet" value={{old('wallet')}}>
+        <input type="text" class="form-control" id="wall  et" placeholder="Name" name="wallet" value={{old('wallet')}}>
         <span style="color:red">@error('wallet'){{$message}}@enderror</span>
     </div>
 
