@@ -22,7 +22,8 @@
             <div class="card box-shadow p-2 walletBtn text-start" style="background-color: #406E8E;">
                 <div class="card-body">
                     <h5 class="card-title text-white" style="margin-bottom: 0.5rem;">{{ $wallet->name }}</h5>
-                    <h6 class="card-subtitle mb-2 text-white"><i class="fas fa-coins"></i> RM {{ $wallet->balance }}
+                    <h6 class="card-subtitle mb-2 text-white"><i class="fas fa-coins"></i> RM {{
+                        number_format($wallet->balance , 2)}}
                     </h6>
                 </div>
             </div>
@@ -37,12 +38,13 @@
         </span>
         @endif
         @foreach($transactions as $transaction)
-        <a href="{{ url('wallet/' . $wallet->id . '/details') }}" class="mb-4 btn col-10">
+        <a href="{{ url('/editTrans/' . $transaction->id) }}" class="mb-4 btn col-10">
             <div class="card box-shadow p-2 walletBtn text-start" style="background-color: #406E8E;">
                 <div class="card-body">
                     <h5 class="card-title text-white" style="margin-bottom: 0.5rem;">{{date('d-m-Y',
                         strtotime($transaction->trans_date));}}</h5>
-                    <h6 class="card-subtitle mb-2 text-white"><i class="fas fa-coins"></i> RM {{ $transaction->amount }}
+                    <h6 class="card-subtitle mb-2 text-white"><i class="fas fa-coins"></i> RM {{
+                        number_format($transaction->amount, 2) }}
                     </h6>
                 </div>
             </div>

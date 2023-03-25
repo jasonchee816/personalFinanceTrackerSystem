@@ -62,6 +62,18 @@ Route::get('logout', [UserController::class,'logout']);
 
 //JS
 
+//Admin Login
+Route::get('/admin/login',[UserController::class,'adminLogin']);
+Route::post('/admin/login',[UserController::class,'authenticateAdmin']);
+
+//Admin Register
+Route::get('/admin/register',[UserController::class,'adminRegister']);
+Route::post('/admin/register',[UserController::class,'storeAdmin']);
+
+//Edit Transaction
+Route::get('/editTrans/{id}',[TransactionController::class, 'editTransView'])->middleware('auth'); 
+Route::post('/editTrans/{id}',[TransactionController::class,'editTrans']);
+
 //JL
 
 //YT

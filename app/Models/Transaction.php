@@ -15,11 +15,11 @@ class Transaction extends Model
 
     public function getCategory()
     {
-        return $this->hasOne(TransactionCategory::class);
+        return $this->belongsTo(TransactionCategory::class, 'category');
     }
 
     public function getWallet()
     {
-        return $this->belongsTo(Wallet::class);
+        return $this->belongsTo(Wallet::class, 'wallet_id');
     }
 }
