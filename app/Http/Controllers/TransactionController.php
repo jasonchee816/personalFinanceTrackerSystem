@@ -68,8 +68,20 @@ class TransactionController extends Controller
         $wallets = auth()->user()->getWallets()->get();
         $wallets_id = auth()->user()->getWallets()->pluck('wallets.id');
         $transactions = Transaction::where('wallet_id', $wallets_id)->get();
-        $expense = Transaction::where('wallet_id', $wallets_id)->where('category', '<=','6')->sum('amount');
-        $income = Transaction::where('wallet_id', $wallets_id)->where('category', '>','6')->sum('amount');
+        $expense_ids = TransactionCategory::where('type', 'expense')->pluck('transaction_categories.id')->all();
+        // $income_ids = TransactionCategory::where('type', 'income')->pluck('transaction_categories.id');
+        $expense = 0;
+        $income = 0;
+        for($i = 0; $i < count($transactions); $i++){
+            if(in_array($transactions[$i]->category, $expense_ids)){
+                $expense+= $transactions[$i]->amount;
+            }
+            else{
+                $income+=$transactions[$i]->amount;
+            }
+        }
+        // $expense = Transaction::where('wallet_id', $wallets_id)->where('category', '<=','6')->sum('amount');
+        // $income = Transaction::where('wallet_id', $wallets_id)->where('category', '>','6')->sum('amount');
         $category = TransactionCategory::all();
         return view('transaction', compact('wallets','transactions','expense','income','category'));
     }

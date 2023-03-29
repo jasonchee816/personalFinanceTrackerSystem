@@ -15,44 +15,52 @@
                 <div class="card box-shadow p-2 walletBtn text-start mb-4" style="background-color: #406E8E;">
                     <div class="card-body">
                         <h5 class="card-title text-white" style="margin-bottom: 0.5rem;">Total income</h5>
-                        <h6 class="card-subtitle mb-2 text-white"><i class="fas fa-coins"></i> RM {{ $income}}</h6>
+                        <h6 class="card-subtitle mb-2 text-white"><i class="fas fa-coins"></i> RM {{
+                            number_format($income, 2)}}</h6>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 mt-3">
+            <div class="col-md-6 mt-3 flex-end">
                 <div class="card box-shadow p-2 walletBtn text-start mb-4" style="background-color: #406E8E;">
                     <div class="card-body">
                         <h5 class="card-title text-white" style="margin-bottom: 0.5rem;">Total expenses</h5>
-                        <h6 class="card-subtitle mb-2 text-white"><i class="fas fa-coins"></i> RM {{ $expense}}</h6>
+                        <h6 class="card-subtitle mb-2 text-white"><i class="fas fa-coins"></i> RM {{
+                            number_format($expense, 2)}}</h6>
                     </div>
                 </div>
             </div>
         </div>
 
-        <table class="table">
+        <table class="table table-striped table-hover mx-auto" style="width:96%; text-align: center;">
             <h1>Recent Transactions</h1>
             <thead>
                 <tr class="table-dark">
-                    <th>No</th>                    
-                    <th>Amount</th>
+                    <th>No</th>
+                    <th>Amount (RM)</th>
                     <th>Description</th>
+                    <th>Wallet</th>
+                    {{--<th>Type</th>--}}
                     <th>Category</th>
                     <th>Date</th>
-
                 </tr>
             </thead>
             <tbody>
                 @foreach($transactions as $key=>$data)
-                    {{--@if($data->category == $category->id)--}}
-                    <tr>
-                        <td>{{ $key+1 }}</td>
-                        <td>{{ $data->amount }}</td>
-                        <td>{{ $data->description }}</td>
-                        {{--<td>{{ $category->name }}</td>--}}
-                        <td>{{date('d-m-Y', strtotime($data->trans_date));}}</td>
+                <tr>
+                    <td>{{ $key+1 }}</td>
+                    @if($data->getCategory()->first()->type == 'income')
+                    <td style="color: green;">+ {{ number_format($data->amount, 2) }}</td>
+                    @else
+                    <td style="color: red;">- {{ number_format($data->amount, 2) }}</td>
+                    @endif
+                    <td>{{ $data->description ?? '-'}}</td>
 
-                    </tr>
-                    {{--@endif--}}
+                    <td>{{ $data->getWallet()->first()->name }}</td>
+                    {{--<td>{{ ucfirst($data->getCategory()->first()->type) }}</td>--}}
+                    <td>{{ $data->getCategory()->first()->name }}</td>
+                    <td>{{date('d-m-Y', strtotime($data->trans_date));}}</td>
+
+                </tr>
                 @endforeach
             </tbody>
         </table>

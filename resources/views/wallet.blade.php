@@ -10,7 +10,8 @@
                 <!-- <i class="fas fa-pen"></i> -->
                 <div class="card-body">
                     <h5 class="card-title text-white" style="margin-bottom: 0.5rem;">{{ $wallet->name }}</h5>
-                    <h6 class="card-subtitle mb-2 text-white"><i class="fas fa-coins"></i> RM {{ $wallet->balance }}</h6>
+                    <h6 class="card-subtitle mb-2 text-white"><i class="fas fa-coins"></i> RM {{
+                        number_format($wallet->balance, 2) }}</h6>
                 </div>
             </div>
         </a>
