@@ -40,6 +40,9 @@ class TransactionController extends Controller
     function editTransView($id){
         $walletData = Wallet::where('user_id', auth()->id())->get();
         $transData = Transaction::find($id);
+        session(['oldAmount'=> $transData->amount]);
+        session(['oldWallet'=> $transData->wallet_id]);
+        session(['oldType'=> $transData->getCategory()->first()->type]);
         $categoryData = TransactionCategory::all();
         return view("editTransaction", ['walletData'=>$walletData, 'categoryData'=>$categoryData, 'transData'=> $transData]);
     }

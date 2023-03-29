@@ -36,7 +36,7 @@
                 <select class="form-select mt-2" id="wallet" name="wallet">
                     <option disabled selected>Please select</option>
                     @foreach($walletData as $wallet)
-                    @if ($transData->getWallet()->first()->id == $wallet->id)
+                    @if ($transData->wallet_id == $wallet->id)
                     <option selected value={{$wallet['id']}}>{{$wallet['name']." (".$wallet['type'].")"}}</option>
                     @else
                     <option value={{$wallet['id']}}>{{$wallet['name']." (".$wallet['type'].")"}}</option>
