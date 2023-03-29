@@ -63,5 +63,15 @@ class TransactionController extends Controller
         $transaction->save();
         return redirect('/');
     }
+
+    function showTransaction(){
+        $wallets = auth()->user()->getWallets()->get();
+        $wallets_id = auth()->user()->getWallets()->pluck('wallets.id');
+        $transactions = Transaction::where('wallet_id', $wallets_id)->get();
+        $expense = Transaction::where('wallet_id', $wallets_id)->where('category', '<=','6')->sum('amount');
+        $income = Transaction::where('wallet_id', $wallets_id)->where('category', '>','6')->sum('amount');
+        $category = TransactionCategory::all();
+        return view('transaction', compact('wallets','transactions','expense','income','category'));
+    }
 }
     

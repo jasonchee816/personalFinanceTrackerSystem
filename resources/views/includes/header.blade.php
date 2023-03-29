@@ -41,7 +41,7 @@
                     <a class="nav-link px-3 ps-5 ps-md-3 ms-5 ms-md-0" href="/wallets">WALLETS</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link px-3 ps-5 ps-md-3 ms-5 ms-md-0" href="/createTrans">TRANSACTIONS</a>
+                    <a class="nav-link px-3 ps-5 ps-md-3 ms-5 ms-md-0" href="/transaction">TRANSACTIONS</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link px-3 ps-5 ps-md-3 ms-5 ms-md-0" href="/profile">PROFILE</a>

@@ -94,4 +94,4 @@ Route::get('passCategory/{id}', [AdminController::class, 'passTransactionCategor
 Route::put('updateCategory', [AdminController::class, 'UpdateTransactionCategory']);
 
 //WL
-
+Route::get('transaction',[TransactionController::class, 'showTransaction']);
