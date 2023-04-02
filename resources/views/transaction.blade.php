@@ -46,7 +46,8 @@
             </thead>
             <tbody>
                 @foreach($transactions as $key=>$data)
-                <tr>
+                <!-- <a href="{{ url('/editTrans/' . $data->id) }}"> -->
+                <tr class="rowEdit" data-href="{{ url('/editTrans/' . $data->id) }}">
                     <td>{{ $key+1 }}</td>
                     @if($data->getCategory()->first()->type == 'income')
                     <td style="color: green;">+ {{ number_format($data->amount, 2) }}</td>
@@ -76,4 +77,13 @@
 </div>
 @endsection
 
-<script src="{{asset('js/wallet.js')}}"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function (event) {
+        document.querySelectorAll('.rowEdit').forEach(function(row) {
+            row.addEventListener('click', function() {
+                console.log(this.dataset.href);
+                window.location.href = this.dataset.href;
+            });
+        });
+    });
+</script>

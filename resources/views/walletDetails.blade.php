@@ -8,11 +8,13 @@
         </div>
         <div class="col-md-6 d-flex justify-content-end">
             <div class="text-end">
-                <a href="{{ url('wallet/' . $wallet->id . '/edit') }}" class="btn btn-outline-primary" style="background-color: #fff; color: #007bff;">Edit</a>
+                <a href="{{ url('wallet/' . $wallet->id . '/edit') }}" class="btn btn-outline-primary"
+                    style="background-color: #fff; color: #007bff;">Edit</a>
                 <form action="{{ url('wallet/' . $wallet->id . '/delete') }}" method="POST" style="display:inline">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="btn btn-outline-danger" style="background-color: #fff; color: #FF0000;" onclick="return confirm('Are you sure you want to delete this wallet?')">Delete</button>
+                    <button type="submit" class="btn btn-outline-danger" style="background-color: #fff; color: #FF0000;"
+                        onclick="return confirm('Are you sure you want to delete this wallet?')">Delete</button>
                 </form>
             </div>
         </div>
@@ -44,16 +46,10 @@
         </div>
     </div>
 
-    <div class="row">
-        <div class="card mb-4 box-shadow" style="background-color: #f9f9f9">
-            <div class="col-md-12">
-                <h1>Transaction History</h1>
-            </div>
-        </div>
-    </div>
-
     <div class="transHistory">
-    <table class="table table-lg">
+        <table class="table table-striped table-hover mx-auto" style="width:96%; text-align: center;">
+            <h1>Transactions History</h1>
+            <thead>
                 <tr class="table-dark">
                     <th>No.</th>
                     <th>Amount</th>
@@ -61,23 +57,38 @@
                     <th>Category</th>
                     <th>Date</th>
                 </tr>
-                @foreach($transData as $key=>$data)
-                    @foreach($categoryData as $cat)
-                        @if($cat['id'] == $data['category'])
+            </thead>
+            @foreach($transData as $key=>$data)
+            @foreach($categoryData as $cat)
+            @if($cat['id'] == $data['category'])
 
-                            <!-- {{$cat_name = $cat['name']}} -->
-                        <tr>
-                            <td>{{ $key+1 }}</td>
-                            <td>{{$data['amount']}}</td>
-                            <td>{{$data['description']}}</td>
-                            <td>{{$cat_name}} </td>
-                            <td>{{$data['trans_date']}}</td>
-                        </tr>
+            <!-- {{$cat_name = $cat['name']}} -->
+            <tr class="rowEdit" data-href="{{ url('/editTrans/' . $data->id) }}">
+                <td>{{ $key+1 }}</td>
+                @if($data->getCategory()->first()->type == 'income')
+                <td style="color: green;">+ {{ number_format($data->amount, 2) }}</td>
+                @else
+                <td style="color: red;">- {{ number_format($data->amount, 2) }}</td>
+                @endif
+                <td>{{ $data->description ?? '-'}}</td>
+                <td>{{$cat_name}} </td>
+                <td>{{date('d-m-Y', strtotime($data->trans_date));}}</td>
+            </tr>
 
-                        @endif
-                    @endforeach
-                @endforeach
-            </table>
+            @endif
+            @endforeach
+            @endforeach
+        </table>
     </div>
 </div>
 @endsection
+<script>
+    document.addEventListener("DOMContentLoaded", function (event) {
+        document.querySelectorAll('.rowEdit').forEach(function(row) {
+            row.addEventListener('click', function() {
+                console.log(this.dataset.href);
+                window.location.href = this.dataset.href;
+            });
+        });
+    });
+</script>

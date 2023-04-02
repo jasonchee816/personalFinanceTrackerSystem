@@ -52,6 +52,12 @@ h4 {
     padding: 60px 50px;
 }
 
+@media screen and (max-width: 768px) {
+    .container1 {
+        padding: 20px 15px;
+    }
+}
+
 .container2 {
     padding: 60px 50px;
     background-color: #f6f6f6;

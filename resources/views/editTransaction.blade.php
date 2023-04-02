@@ -80,7 +80,7 @@
 
         <div class="d-grid col-3 mx-auto">
             <button type="submit" class="btn btn-primary showAfterType">Save Transaction </button>
-            <button type="submit" class="btn btn-outline-primary mt-3">Cancel</button>
+            <a href="{{ back()->getTargetUrl()}}" class="btn btn-outline-primary mt-3" >Cancel</a>
         </div>
     </form>
 

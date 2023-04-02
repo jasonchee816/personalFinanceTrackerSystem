@@ -50,7 +50,7 @@
                     <a class="nav-link ps-5 ps-md-3 ms-5 ms-md-0" href="" onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">LOGOUT</a>
                 </li>
-                <form id="logout-form" action="logout" method="GET" style="display: none;">
+                <form id="logout-form" action="/logout" method="GET" style="display: none;">
                     @csrf
                 </form>
 
