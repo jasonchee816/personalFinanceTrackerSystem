@@ -10,34 +10,31 @@
         </div>
     </div>
 
-    <div style="letter-spacing:2px;">
+    <div style="letter-spacing:2px;" >
             <div class="card mb-4 box-shadow">
-                <div class="card-body" style="display:flex;">
-                    <div class="col-sm-2 p-3">
-                        <p class="h3 text-capitalize mb-4 pb-3" > Name: </p>
-                        <p class=" h3 mb-4 pb-2"> Email: </p>
-                        <p class="h3"> Telephone Number: </p>
-                    </div>
-
+                <div class="card-body d-sm-flex">
                     <form class="col-sm-8" id="editProfile" action="editProfile" method="POST">
                     @csrf
-                        <div class="p-3 inline-block">
-                            <input class="text-capitalize border-0 h3" type="text" name="name" id="editField" value="{{$user['name']}}" 
-                                 readonly> </input><br>
-                            <span style="color:red;" >@error('name'){{$message}}@enderror</span><br>
-
-                            <input class=" border-0 h3" type="text" name="email" id="editField" value="{{$user['email']}}" 
-                                readonly> </input><br>
-                            <span style="color:red; white-space:nowrap;">@error('email'){{$message}}@enderror</span><br>
-
-                            <input class=" h3 border-0" type="text" name="tel_no" id="editField" value="{{$user['tel_no']}}" 
-                                 readonly> </input><br>
-                            <span style="color:red; ">@error('tel_no'){{$message}}@enderror</span>
+                        <div class="mb-4">
+                            <label class="form-label h4" for="name">Name</label>
+                            <input type="text" id="editField" name="name" class="form-control input-lg" value="{{$user['name']}}" readOnly/>
+                            
+                            <span style="color:red">@error('name'){{$message}}@enderror</span>
+                        </div>
+                        <div class="mb-4">
+                            <label class="form-label h4" for="email">Email</label>
+                            <input type="email" id="editField" name="email" class="form-control input-lg" value="{{$user['email']}}" readOnly/>
+                            <span style="color:red">@error('email'){{$message}}@enderror</span>
+                        </div>
+                        <div class="mb-4">
+                            <label class="form-label h4" for="tel_no">Phone Number</label>
+                            <input type="number" id="editField" name="tel_no" class="form-control input-lg" value="{{$user['tel_no']}}" readOnly/>
+                            <span style="color:red">@error('tel_no'){{$message}}@enderror</span>
                         </div>
                     </form>
 
                     
-                    <div class="col-sm-2 p-3 ">     
+                    <div class="col-sm-3 p-3 ">     
                         <div class="text-end">
                             <button id="editButt" type="submit" class="btn btn-outline-primary btn-lg" 
                                 style="background-color: #fff; color: #007bff;">Edit</button>
@@ -73,13 +70,7 @@ $(document).ready (function(){
 <script>
 $(document).ready (function(){
     $('#cancelButt').click(function(){
-        // $("input[id^='editField']").attr('readOnly','readOnly');
-        // $("#cancelButt").hide();
-        // $("#saveButt").hide();
-        // $("#editButt").toggle();
-        // $("input[id^='editField']")['0'].reset()
         location.reload();
-
     });
 
     $('#saveButt').click(function(){
