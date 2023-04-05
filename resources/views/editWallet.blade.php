@@ -17,9 +17,9 @@
         </div>
 
         <div class="form-group">
-            <label for="balance">Balance</label>
-            <input type="text" name="balance" id="balance" class="form-control" value="{{ $wallet->balance }}">
-            <span style="color:red">@error('balance'){{$message}}@enderror</span>
+            <label for="initial_balance">initial_balance</label>
+            <input type="text" name="initial_balance" id="initial_balance" class="form-control" value="{{ $wallet->initial_balance }}">
+            <span style="color:red">@error('initial_balance'){{$message}}@enderror</span>
         </div>
         <br>
         <button type="submit" class="btn btn-primary">Save</button>

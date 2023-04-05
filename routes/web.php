@@ -52,7 +52,7 @@ Route::view('showWalletDetails','showWalletDetails');
 Route::get('/wallet/{wallet}/details',[WalletController::class, 'showWalletDetails'])->middleware('auth');
 
 //Delete Wallet
-Route::delete('/task/{id}/delete', [WalletController::class, 'deleteWallet']);
+Route::delete('/wallet/{id}/delete', [WalletController::class, 'deleteWallet']);
 
 //Profile
 Route::get('profile',[UserController::class, 'getProfile'])->middleware('auth');
@@ -77,7 +77,7 @@ Route::get('/admin/register',[UserController::class,'adminRegister']);
 Route::post('/admin/register',[UserController::class,'storeAdmin']);
 
 //Edit Transaction
-Route::get('/editTrans/{id}',[TransactionController::class, 'editTransView'])->middleware('auth'); 
+Route::get('/editTrans/{id}',[TransactionController::class, 'editTransView'])->middleware('auth');
 Route::post('/editTrans/{id}',[TransactionController::class,'editTrans']);
 
 //JL

@@ -18,8 +18,8 @@ class TransactionController extends Controller
 
     function createTrans(Request $request){
         $request->validate([
-            'transactionType' => 'required', 
-            'wallet' => 'required', 
+            'transactionType' => 'required',
+            'wallet' => 'required',
             'category' => 'required',
             'amount' => ['required','regex: /^\d{0,8}(\.\d{1,2})?$/'],
             'transactionDate' => 'required',
@@ -34,6 +34,14 @@ class TransactionController extends Controller
         $transaction->description = $request->input('description');
 
         $transaction->save();
+
+        $wallet = Wallet::find($request->input('wallet'));
+        if ($request->transactionType == 'income') {
+            $wallet->balance += $request->amount;
+        } else if ($request->transactionType == 'expense') {
+            $wallet->balance -= $request->amount;
+        }
+        $wallet->save();
         return redirect('/');
     }
 
@@ -49,8 +57,8 @@ class TransactionController extends Controller
 
     function editTrans(Request $request, $id){
         $request->validate([
-            'transactionType' => 'required', 
-            'wallet' => 'required', 
+            'transactionType' => 'required',
+            'wallet' => 'required',
             'category' => 'required',
             'amount' => ['required','regex: /^\d{0,8}(\.\d{1,2})?$/'],
             'transactionDate' => 'required',
@@ -58,12 +66,29 @@ class TransactionController extends Controller
         ]);
 
         $transaction = Transaction::find($id);
+
         $transaction->wallet_id = $request->input('wallet');
         $transaction->category = $request->input('category');
         $transaction->amount = $request->input('amount');
         $transaction->trans_date = $request->input('transactionDate');
         $transaction->description = $request->input('description');
         $transaction->save();
+
+        $wallet = Wallet::find($request->input('wallet'));
+        $oldType = session('oldType');
+        $oldAmount = session('oldAmount');
+        if ($oldType == 'income') {
+            $wallet->balance -= $oldAmount;
+        } else {
+            $wallet->balance += $oldAmount;
+        }
+
+        if ($request->transactionType == 'income') {
+            $wallet->balance += $request->amount;
+        } else if ($request->transactionType == 'expense') {
+            $wallet->balance -= $request->amount;
+        }
+        $wallet->save();
         return redirect('/');
     }
 
@@ -89,4 +114,4 @@ class TransactionController extends Controller
         return view('transaction', compact('wallets','transactions','expense','income','category'));
     }
 }
-    
+

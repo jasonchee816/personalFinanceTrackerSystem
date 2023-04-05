@@ -26,7 +26,6 @@ class WalletController extends Controller
         $wallet->name = $request->input('wallet');
         $wallet->balance = $request->input('amount');
         $wallet->initial_balance = $request->input('amount');
-        //hardcoded user_id
         $wallet->user_id = auth()->id();
         $wallet->type = $request->input('category');
         $wallet->save();
@@ -42,17 +41,32 @@ class WalletController extends Controller
     function updateWallet(Request $request){
         $request->validate([
             'wallet' => 'required',
-            'balance' => ['required','regex: /^\d{0,8}(\.\d{1,2})?$/'],
+            'initial_balance' => ['required','regex: /^\d{0,8}(\.\d{1,2})?$/'],
         ]);
+
         $wallet = Wallet::find($request->id);
-        $wallet->name = $request->input('name');
-        $wallet->balance = $request->input('balance');
+        $wallet->name = $request->input('wallet');
+        //Use the session
+        $oldInitialBalance = session('oldInitialBalance');
+        $newInitialBalance = $request->input('initial_balance');
+        $difference = $oldInitialBalance - $newInitialBalance;
+
+        $wallet->balance -= $difference; // update the wallet's balance by subtracting the difference from the current balance
+        $wallet->initial_balance = $newInitialBalance;
         $wallet->save();
+
+        // clear the session variable
+        $request->session()->forget('oldInitialBalance');
+
         return redirect('wallets');
     }
 
+
+
+
     //to pass the data into the edit wallet page. With the Wallet, it will automatically find the relevant wallet
     function passWalletDetails(Wallet $wallet){
+        session(['oldInitialBalance' => $wallet->initial_balance]); // store the original initial balance in a session variable
         return view('editWallet', compact('wallet'));
     }
 
