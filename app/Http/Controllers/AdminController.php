@@ -36,7 +36,15 @@ class AdminController extends Controller
             }
         });
         // dd($transByCat);
-    
+        $eachCat = [];
+        $totalAmountCat = [];
+
+        foreach($transByCat->keys() as $cat){
+            array_push($eachCat, $cat);
+            array_push($totalAmountCat, $transByCat[$cat]['totalPrice']);
+        }
+        
+        
         $userByType = Wallet::orderBy('balance')
         ->select('*')
         ->join('users', 'users.id', '=', 'wallets.user_id')
@@ -50,15 +58,22 @@ class AdminController extends Controller
             //each cat
             $data->put('totalBalance' , 0.0);
             for($i=0; $i<count($data)-1; $i++){
-                // dd($data[$i]);
                 $data['totalBalance'] += $data[$i]->balance;
             }
-
             $data1 = $data->unique('user_id');      
             $data->userNum = $data1->count()-1;
         });
-        // dd($userByType["e-Wallet"]->userNum);
-        return view('adminPage',compact('category', 'transByCat','userByType'));
+        // dd($userByType);
+
+        $eachType = [];
+        $userNumType=[];
+
+        foreach($userByType->keys() as $type){
+            array_push($eachType, $type);
+            array_push($userNumType, $userByType[$type]->userNum);
+        }
+
+        return view('adminPage',compact('category', 'transByCat','userByType', 'eachCat', 'totalAmountCat', 'eachType', 'userNumType'));
     }
 
     public function showAdminOperation() {

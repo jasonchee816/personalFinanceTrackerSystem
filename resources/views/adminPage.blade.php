@@ -8,6 +8,21 @@
 </div>
 
 <div class="container1">
+    @if($transByCat->count() == 0)
+    <span>
+        You have no recent transactions.
+    </span>
+    @endif
+
+    <div class="row mb-5">
+        <div class="col-6">
+            <canvas id="myChart2"></canvas>
+        </div>
+        <div class="col-6">
+            <canvas id="myChart3"></canvas>
+        </div>
+    </div>
+        
     <h2>Total Amount and frequency of each Category</h2>
 
     <table class="table table-striped table-hover mb-4">
@@ -91,6 +106,13 @@
 
 
 
+<script>
+    var eachCat = @json($eachCat);
+    var totalAmountCat = @json($totalAmountCat);
+    var eachType = @json($eachType);
+    var userNumType = @json($userNumType);
 
+</script>
+<script src="{{asset('js/admin.js')}}"></script>
 <script src="{{asset('js/homepage.js')}}"></script>
 @stop
