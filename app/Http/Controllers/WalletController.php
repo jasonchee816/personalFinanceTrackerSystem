@@ -83,6 +83,9 @@ class WalletController extends Controller
     function deleteWallet($id){
         $data = Wallet::find($id);
         $this->authorize('delete', $data);
+        $data->getTransactions()->each(function ($transaction) {
+            $transaction->delete();
+        });
         $data->delete();
         return redirect("wallets");
     }

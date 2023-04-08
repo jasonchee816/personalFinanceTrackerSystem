@@ -34,7 +34,7 @@
             <div class="card mb-4 box-shadow">
                 <div class="card-body text-right">
                     <h5 class="card-title">Balance:</h5>
-                    <p class="card-text">RM {{ $wallet->balance }}</p>
+                    <p class="card-text">RM {{ number_format($wallet->balance, 2) }}</p>
                 </div>
             </div>
         </div>
