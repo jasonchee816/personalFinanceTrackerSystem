@@ -8,7 +8,7 @@
 </div>
 
 <div class="container1">
-
+    \
     <h2>Operation</h2>
     <a href="createCategory" class="mb-4 btn">
         <div class="card box-shadow p-2 walletBtn text-start" style="background-color: #1D7874;">
@@ -23,7 +23,6 @@
                 <th>Category Name (A-Z)</th>
                 <th>Category Type</th>
                 <th>Update</th>
-                <th>Delete</th>
             </tr>
         </thead>
         <tbody>
@@ -33,9 +32,6 @@
                 <td>{{$categories['type']}}</td>
                 <td>
                     <a href="passCategory/{{$categories['id']}}" class="btn btn-primary btn-sm">Update</a>
-                </td>
-                <td>
-                    <a href="deleteCategory/{{$categories['id']}}" class="btn btn-danger btn-sm mr-2">Delete</a>
                 </td>
 
             </tr>

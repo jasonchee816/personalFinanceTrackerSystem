@@ -105,20 +105,12 @@ class AdminController extends Controller
         return redirect('/adminHomepage');
     }
 
-    public function DeleteTransactionCategory($id) {
-        $data = TransactionCategory::find($id);
-        $data ->delete();
-        return redirect('/adminHomepage');
-    }
-
     function UpdateTransactionCategory(Request $request){
         $request->validate([
             'categoryName' => 'required',
-            'categoryType' => 'required',
         ]);
         $transactionCategory = TransactionCategory::find($request->id);
         $transactionCategory->name = $request->input('categoryName');
-        $transactionCategory->type = $request->input('categoryType');
         $transactionCategory->save();
         return redirect('/adminHomepage');
     }
@@ -126,6 +118,5 @@ class AdminController extends Controller
     function passTransactionCategory($id){
         $transactionCategory = TransactionCategory::find($id);
         return view('adminUpdateCategory', compact('transactionCategory'));
-
     }
 }
