@@ -61,6 +61,19 @@ class AdminController extends Controller
         return view('adminPage',compact('category', 'transByCat','userByType'));
     }
 
+    public function showAdminOperation() {
+        $category = TransactionCategory::all();
+        $transByCat = Transaction::orderBy('amount')
+        ->select('*')
+        ->join('transaction_categories', 'transaction_categories.id', '=', 'transactions.category')
+        ->get()
+        ->groupBy(function($data) {
+            return $data->name;
+        });
+
+        return view('adminOperation',compact('category'));
+    }
+
     public function showCreateCategory() {
         return view('createCategory');
     }

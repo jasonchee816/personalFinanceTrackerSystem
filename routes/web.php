@@ -65,6 +65,8 @@ Route::post('/admin/register',[UserController::class,'storeAdmin']);
 
 //Admin Homepage
 Route::get('adminHomepage',[AdminController::class,'showAdminHomepage']);
+Route::get('adminOperation',[AdminController::class,'showAdminOperation']);
+
 
 //Create New Trans Category
 Route::get('createCategory',[AdminController::class,'showCreateCategory']);

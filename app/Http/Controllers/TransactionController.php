@@ -149,7 +149,6 @@ class TransactionController extends Controller
                 $expense+= $transactionsGrouped[$i]->amount;
                 array_push($expenseAmountGrouped, $transactionsGrouped[$i]->amount);
                 array_push($expenseCategory, TransactionCategory::find($transactionsGrouped[$i]->category)->name);
-
             }
             else{
                 $income+=$transactionsGrouped[$i]->amount;

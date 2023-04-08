@@ -34,18 +34,18 @@
         @elsecan('isAdmin')
         <div class="collapse navbar-collapse navbar-right me-xxl-5  pe-xxl-5" id="navbarsExample03">
             <ul class="navbar-nav ms-auto mb-2 mb-sm-0">
-                <!-- <li class="nav-item">
-                    <a class="nav-link px-3 ps-5 ps-md-3 ms-5 ms-md-0" href="/#home">HOME</a>
-                </li> 
                 <li class="nav-item">
+                    <a class="nav-link px-3 ps-5 ps-md-3 ms-5 ms-md-0" href="/adminHomepage">OVERVIEW</a>
+                </li>
+                <!--<li class="nav-item">
                     <a class="nav-link px-3 ps-5 ps-md-3 ms-5 ms-md-0" href="/wallets">WALLETS</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link px-3 ps-5 ps-md-3 ms-5 ms-md-0" href="/transactions">TRANSACTIONS</a>
-                </li>
+                </li>-->
                 <li class="nav-item">
-                    <a class="nav-link px-3 ps-5 ps-md-3 ms-5 ms-md-0" href="/profile">PROFILE</a>
-                </li> -->
+                    <a class="nav-link px-3 ps-5 ps-md-3 ms-5 ms-md-0" href="/adminOperation">OPERATION</a>
+                </li>
                 <li class="nav-item pe-5 me-5">
                     <a class="nav-link ps-5 ps-md-3 ms-5 ms-md-0" href="" onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">LOGOUT</a>

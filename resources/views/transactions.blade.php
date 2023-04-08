@@ -96,10 +96,10 @@
     var expenseCategory = @json($expenseCategory);
     var expenseAmountGrouped = @json($expenseAmountGrouped);
 
-    console.log(incomeCategory)
-    console.log(incomeAmountGrouped)
-    console.log(expenseCategory)
-    console.log(expenseAmountGrouped)
+    // console.log(incomeCategory)
+    // console.log(incomeAmountGrouped)
+    // console.log(expenseCategory)
+    // console.log(expenseAmountGrouped)
 
 
 </script>
