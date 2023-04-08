@@ -102,7 +102,7 @@
     var categoryData = @json($categoryData);
     var oldCategory = "{{$transData->getCategory()->first()->id}}";
 </script>
-<script src="{{asset('js/createTransaction.js')}}"></script>
+<script src="{{asset('js/createEditTransaction.js')}}"></script>
 
 @else
 <div class="mt-5 pt-5 mx-auto text-center">

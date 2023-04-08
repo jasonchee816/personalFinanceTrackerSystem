@@ -132,7 +132,7 @@ class TransactionController extends Controller
         $wallets = auth()->user()->getWallets()->get();
         $wallets_id = auth()->user()->getWallets()->pluck('wallets.id');
         $transactions = Transaction::whereIn('wallet_id', $wallets_id)->orderBy('trans_date', 'DESC')->get();
-        $transactionsGrouped = Transaction::where('wallet_id', $wallets_id)
+        $transactionsGrouped = Transaction::whereIn('wallet_id', $wallets_id)
                                 ->select('category', DB::raw('SUM(amount) as amount'))
                                 ->groupBy('category')->get();
         $expense_ids = TransactionCategory::where('type', 'expense')->pluck('transaction_categories.id')->all();

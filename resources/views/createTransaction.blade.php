@@ -90,7 +90,7 @@
     var categoryData = @json($categoryData);
     var oldCategory = "{{old('category')}}";
 </script>
-<script src="{{asset('js/createTransaction.js')}}"></script>
+<script src="{{asset('js/createEditTransaction.js')}}"></script>
 
 
 @stop

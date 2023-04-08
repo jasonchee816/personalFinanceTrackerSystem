@@ -20,7 +20,7 @@
                 </div>
             </a>
 
-            <a href="createTrans" class="mb-4 btn col-10">
+            <a href="/createTrans" class="mb-4 btn col-10">
                 <div class="card box-shadow p-3 walletBtn text-start" style="background-color: #406E8E;">
                     <div class="card-body">
                         <h5 class="card-title text-center text-white">+ Add New Transaction</h5>
@@ -79,7 +79,7 @@
                 </div>
             </a>
 
-            <a href="createTrans" class="mb-4 btn col-10">
+            <a href="/createTrans" class="mb-4 btn col-10">
                 <div class="card box-shadow p-2 walletBtn text-start py-5" style="background-color: #406E8E;">
                     <div class="card-body">
                         <h5 class="card-title text-white">+ Add New Transaction</h5>

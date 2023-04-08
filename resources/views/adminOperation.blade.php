@@ -8,15 +8,7 @@
 </div>
 
 <div class="container1">
-    \
     <h2>Operation</h2>
-    <a href="createCategory" class="mb-4 btn">
-        <div class="card box-shadow p-2 walletBtn text-start" style="background-color: #1D7874;">
-            <div class="card-body">
-                <h5 class="card-title text-white">+ Create New Category</h5>
-            </div>
-        </div>
-    </a>
     <table class="table table-striped table-hover">
         <thead class="table-dark">
             <tr>
@@ -38,6 +30,13 @@
             @endforeach
         </tbody>
     </table>
+    <a href="createCategory" class="mb-4 btn">
+        <div class="card box-shadow p-2 walletBtn text-start" style="background-color: #1D7874;">
+            <div class="card-body">
+                <h5 class="card-title text-white">+ Create New Category</h5>
+            </div>
+        </div>
+    </a>
 </div>
 
 

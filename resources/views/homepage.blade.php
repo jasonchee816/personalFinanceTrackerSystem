@@ -18,9 +18,7 @@
             spend
             years mastering their craft, bringing together decades of engineering expertise to produce a real work of
             art.
-            When you choose Zoho, you get more than just a single product or a tightly integrated suite. You get our
-            commitment to continuous refinement and to improving your experience. And you get our relentless devotion to
-            your satisfaction. </p>
+        </p>
     </div>
 </div>
 
@@ -64,12 +62,12 @@
     <div class="mb-4">
         <p class="question">Who is LMEO?</p>
         <p class="answer"> We are a Software Company hoping to help people in personal finance. You can
-            learn more about us in <a href="about">here.</a></p>
+            learn more about us in <a href="#about">here.</a></p>
     </div>
 
     <div class="mb-4">
         <p class="question">How do I contact LMEO?</p>
-        <p class="answer">You may contact us via any of the methods list in <a href="contact">here.</a>
+        <p class="answer">You may contact us via any of the methods list in <a href="#contact">here.</a>
         </p>
     </div>
 
@@ -92,5 +90,4 @@
     </div>
 </div>
 
-<script src="{{asset('js/homepage.js')}}"></script>
 @stop

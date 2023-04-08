@@ -21,12 +21,8 @@
             </div>
         </div>
     </div>
-    @if($transData->count() == 0)
-    <span>
-        You have no recent transactions.
-    </span>
-    @endif
 
+    @if($transData->count() != 0)
     <div class="row">
         <div class="col-4">
             <canvas id="myChart"></canvas>
@@ -38,6 +34,11 @@
             <canvas id="myChart3"></canvas>
         </div>
     </div>
+
+    <script src="{{asset('js/transactionsWalletDetails.js')}}"></script>
+
+    @endif
+
 
     <div class="row text-center">
         <div class="col-md-6 mt-3">
@@ -120,8 +121,21 @@
             @endif
             @endforeach
             @endforeach
+            @if($transData->count() == 0)
+            <tr>
+                <td colspan="5">You have no recent Transactions on this Wallet.</td>
+            </tr>
+            @endif
         </table>
     </div>
+
+    <a href="/createTrans" class="mb-4 btn">
+        <div class="card box-shadow p-2 walletBtn text-start" style="background-color: #406E8E;">
+            <div class="card-body">
+                <h5 class="card-title text-white">+ Add New Transaction</h5>
+            </div>
+        </div>
+    </a>
 </div>
 <script>
     document.addEventListener("DOMContentLoaded", function (event) {
@@ -148,6 +162,5 @@
     var expenseCategory = @json($expenseCategory);
     var expenseAmountGrouped = @json($expenseAmountGrouped);
 </script>
-<script src="{{asset('js/transactions.js')}}"></script>
 
 @stop

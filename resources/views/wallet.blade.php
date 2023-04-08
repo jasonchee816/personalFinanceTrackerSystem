@@ -8,6 +8,7 @@
         {{ session()->get('message') }}
     </div>
     @endif
+    @if($wallets->count() != 0)
     <div class="row mb-3">
         <div class="col-6">
             <canvas id="balanceChart"></canvas>
@@ -17,8 +18,17 @@
         </div>
     </div>
 
+    <script src="https://code.jquery.com/jquery-3.6.4.js"
+        integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+
+    <script src="{{ asset('js/wallet.js') }}"></script>
+    @endif
+
     <div class="row mb-3">
         <h1>Wallets List</h1>
+        @if($wallets->count() == 0)
+        <span>You have no Wallets!</span>
+        @endif
         @foreach($wallets as $wallet)
         <a href="{{ url('wallet/' . $wallet->id . '/details') }}" class="mb-4 btn">
             <div class="card box-shadow p-2 walletBtn text-start" style="background-color: #406E8E;">
@@ -41,11 +51,5 @@
         </a>
     </div>
 </div>
-<script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E="
-    crossorigin="anonymous"></script>
-
-<script src="{{ asset('js/wallet.js') }}"></script>
 
 @stop
-@section('scripts')
-@endsection

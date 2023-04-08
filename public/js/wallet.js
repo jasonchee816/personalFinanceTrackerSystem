@@ -54,7 +54,7 @@ function drawChart(data, id) {
         },
     };
     let Chart1 = new Chart(ctx1, {
-        type: "pie",
+        type: id == "balanceChart" ? "bar" : "pie",
         data: chartData1,
         options: chartOptions1,
     });

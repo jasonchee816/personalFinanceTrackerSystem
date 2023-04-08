@@ -4,12 +4,7 @@
 <div class="container1">
     <h1> Transactions</h1>
     <div class="row mb-3">
-        @if($transactions->count() == 0)
-        <span>
-            You have no recent transactions.
-        </span>
-        @endif
-
+        @if($transactions->count() != 0)
         <div class="row">
             <div class="col-4">
                 <canvas id="myChart"></canvas>
@@ -21,6 +16,8 @@
                 <canvas id="myChart3"></canvas>
             </div>
         </div>
+        <script src="{{asset('js/transactionsWalletDetails.js')}}"></script>
+        @endif
 
 
         <div class="row text-center">
@@ -58,8 +55,12 @@
                 </tr>
             </thead>
             <tbody>
+                @if($transactions->count() == 0)
+                <tr>
+                    <td colspan="6">You have no Recent Transactions!</td>
+                </tr>
+                @endif
                 @foreach($transactions as $key=>$data)
-                <!-- <a href="{{ url('/editTrans/' . $data->id) }}"> -->
                 <tr class="rowEdit" data-href="{{ url('/editTrans/' . $data->id) }}">
                     <td>{{ $key+1 }}</td>
                     @if($data->getCategory()->first()->type == 'income')
@@ -78,15 +79,16 @@
                 @endforeach
             </tbody>
         </table>
-
-        <a href="createTrans" class="mb-4 btn">
-            <div class="card box-shadow p-2 walletBtn text-start" style="background-color: #406E8E;">
-                <div class="card-body">
-                    <h5 class="card-title text-white">+ Add New Transaction</h5>
-                </div>
-            </div>
-        </a>
     </div>
+
+    <a href="/createTrans" class="mb-4 btn">
+        <div class="card box-shadow p-2 walletBtn text-start" style="background-color: #406E8E;">
+            <div class="card-body">
+                <h5 class="card-title text-white">+ Add New Transaction</h5>
+            </div>
+        </div>
+    </a>
+
 </div>
 <script>
     var income = @json($income);
@@ -95,14 +97,6 @@
     var incomeAmountGrouped = @json($incomeAmountGrouped);
     var expenseCategory = @json($expenseCategory);
     var expenseAmountGrouped = @json($expenseAmountGrouped);
-
-    // console.log(incomeCategory)
-    // console.log(incomeAmountGrouped)
-    // console.log(expenseCategory)
-    // console.log(expenseAmountGrouped)
-
-
 </script>
-<script src="{{asset('js/transactions.js')}}"></script>
 
 @stop
