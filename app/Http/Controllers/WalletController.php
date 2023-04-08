@@ -139,11 +139,5 @@ class WalletController extends Controller
         return view('walletDetails', compact('wallet', 'transData', 'categoryData'));
     }
 
-    // function getTransByWalletId($id){
-    //     $transData = Wallet::find($id)->getTransactions;
-    //     $categoryData = TransactionCategory::all();
-    //     return view("walletDetails", ['walletData'=>$transData, 'categoryData'=>$categoryData]);
-    // }
-
 }
 

@@ -8,7 +8,7 @@
         {{ session()->get('message') }}
     </div>
     @endif
-    <div class="row">
+    <div class="row mb-3">
         <div class="col-4">
             <canvas id="balanceChart"></canvas>
         </div>
@@ -18,6 +18,7 @@
     </div>
 
     <div class="row mb-3">
+        <h1>Transactions List</h1>
         @foreach($wallets as $wallet)
         <a href="{{ url('wallet/' . $wallet->id . '/details') }}" class="mb-4 btn">
             <div class="card box-shadow p-2 walletBtn text-start" style="background-color: #406E8E;">
@@ -40,10 +41,8 @@
         </a>
     </div>
 </div>
-<script
-  src="https://code.jquery.com/jquery-3.6.4.js"
-  integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E="
-  crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E="
+    crossorigin="anonymous"></script>
 
 <script src="{{ asset('js/wallet.js') }}"></script>
 
