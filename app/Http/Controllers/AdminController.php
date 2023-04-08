@@ -11,6 +11,11 @@ use App\Models\Transaction;
 class AdminController extends Controller
 {
     //
+    public function __construct()
+    {
+        $this->middleware('can:isAdmin');
+    }
+
     public function showAdminHomepage() {
         $category = TransactionCategory::all();
         $transByCat = Transaction::orderBy('amount')

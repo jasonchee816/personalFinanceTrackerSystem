@@ -2,13 +2,26 @@
 
 @section('content')
 <div class="container1">
-    <h1> Transaction Overview</h1>
+    <h1> Transactions</h1>
     <div class="row mb-3">
         @if($transactions->count() == 0)
         <span>
             You have no recent transactions.
         </span>
         @endif
+
+        <div class="row">
+            <div class="col-4">
+                <canvas id="myChart"></canvas>
+            </div>
+            <div class="col-4">
+                <canvas id="myChart2"></canvas>
+            </div>
+            <div class="col-4">
+                <canvas id="myChart3"></canvas>
+            </div>
+        </div>
+
 
         <div class="row text-center">
             <div class="col-md-6 mt-3">
@@ -32,7 +45,7 @@
         </div>
 
         <table class="table table-striped table-hover mx-auto" style="width:96%; text-align: center;">
-            <h1>Recent Transactions</h1>
+            <h1>Transactions List</h1>
             <thead>
                 <tr class="table-dark">
                     <th>No</th>
@@ -75,15 +88,21 @@
         </a>
     </div>
 </div>
-@endsection
-
 <script>
-    document.addEventListener("DOMContentLoaded", function (event) {
-        document.querySelectorAll('.rowEdit').forEach(function(row) {
-            row.addEventListener('click', function() {
-                console.log(this.dataset.href);
-                window.location.href = this.dataset.href;
-            });
-        });
-    });
+    var income = @json($income);
+    var expense = @json($expense);
+    var incomeCategory = @json($incomeCategory);
+    var incomeAmountGrouped = @json($incomeAmountGrouped);
+    var expenseCategory = @json($expenseCategory);
+    var expenseAmountGrouped = @json($expenseAmountGrouped);
+
+    console.log(incomeCategory)
+    console.log(incomeAmountGrouped)
+    console.log(expenseCategory)
+    console.log(expenseAmountGrouped)
+
+
 </script>
+<script src="{{asset('js/transactions.js')}}"></script>
+
+@stop

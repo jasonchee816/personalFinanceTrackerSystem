@@ -6,10 +6,19 @@ use Illuminate\Http\Request;
 use App\Models\Transaction;
 use App\Models\Wallet;
 use App\Models\TransactionCategory;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
+use DB;
+
 
 
 class TransactionController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+        $this->middleware('can:isUser');
+    }
+
     function createTransView(){
         $walletData = Wallet::where('user_id', auth()->id())->get();
         $categoryData = TransactionCategory::all();
@@ -66,6 +75,9 @@ class TransactionController extends Controller
         ]);
 
         $transaction = Transaction::find($id);
+        $newWallet = Wallet::find($request->input('wallet'));
+        $this->authorize('update', $transaction);
+        $this->authorize('update', $newWallet);
 
         $transaction->wallet_id = $request->input('wallet');
         $transaction->category = $request->input('category');
@@ -74,44 +86,81 @@ class TransactionController extends Controller
         $transaction->description = $request->input('description');
         $transaction->save();
 
-        $wallet = Wallet::find($request->input('wallet'));
+        $isTypeSame = (session('oldType') == $transaction->getCategory()->first()->type);
+        $isWalletSame = (session('oldWallet') == $request->input('wallet'));
+        $isAmountSame = (session('oldAmount') == $request->input('amount'));
+
         $oldType = session('oldType');
         $oldAmount = session('oldAmount');
-        if ($oldType == 'income') {
-            $wallet->balance -= $oldAmount;
-        } else {
-            $wallet->balance += $oldAmount;
-        }
 
-        if ($request->transactionType == 'income') {
-            $wallet->balance += $request->amount;
-        } else if ($request->transactionType == 'expense') {
-            $wallet->balance -= $request->amount;
+
+        if($isWalletSame){
+            if($isTypeSame){
+                if($isAmountSame){
+                }
+                else{
+                    $oldType == 'income'? 
+                    $newWallet->balance += ($request->amount - $oldAmount): 
+                    $newWallet->balance -= ($request->amount - $oldAmount); 
+                }
+            }
+            else{
+                if($session('oldType')== 'income')
+                    $newWallet->balance -= ($request->amount + $oldAmount); 
+                else
+                    $newWallet->balance += ($request->amount + $oldAmount);
+            }
         }
-        $wallet->save();
+        else{
+            $oldWallet = Wallet::find(session('oldWallet'));
+            if($oldType == 'income')
+                $oldWallet->balance -= $oldAmount;
+            else
+                $oldWallet->balance += $oldAmount;
+            $oldWallet->save();
+
+            if ($request->transactionType == 'income') 
+                $newWallet->balance += $request->amount;
+            else 
+                $newWallet->balance -= $request->amount;
+        }
+        $newWallet->save();
         return redirect('/');
     }
 
-    function showTransaction(){
+    function showTransactions(){
         $wallets = auth()->user()->getWallets()->get();
         $wallets_id = auth()->user()->getWallets()->pluck('wallets.id');
-        $transactions = Transaction::where('wallet_id', $wallets_id)->get();
+        $transactions = Transaction::where('wallet_id', $wallets_id)->orderBy('trans_date', 'DESC')->get();
+        $transactionsGrouped = Transaction::where('wallet_id', $wallets_id)
+                                ->select('category', DB::raw('SUM(amount) as amount'))
+                                ->groupBy('category')->get();
         $expense_ids = TransactionCategory::where('type', 'expense')->pluck('transaction_categories.id')->all();
         // $income_ids = TransactionCategory::where('type', 'income')->pluck('transaction_categories.id');
         $expense = 0;
         $income = 0;
-        for($i = 0; $i < count($transactions); $i++){
-            if(in_array($transactions[$i]->category, $expense_ids)){
-                $expense+= $transactions[$i]->amount;
+        $incomeCategory = [];
+        $incomeAmountGrouped = [];
+        $expenseCategory = [];
+        $expenseAmountGrouped = [];
+
+        for($i = 0; $i < count($transactionsGrouped); $i++){
+            if(in_array($transactionsGrouped[$i]->category, $expense_ids)){
+                $expense+= $transactionsGrouped[$i]->amount;
+                array_push($expenseAmountGrouped, $transactionsGrouped[$i]->amount);
+                array_push($expenseCategory, TransactionCategory::find($transactionsGrouped[$i]->category)->name);
+
             }
             else{
-                $income+=$transactions[$i]->amount;
+                $income+=$transactionsGrouped[$i]->amount;
+                array_push($incomeAmountGrouped, $transactionsGrouped[$i]->amount);
+                array_push($incomeCategory, TransactionCategory::find($transactionsGrouped[$i]->category)->name);
             }
         }
-        // $expense = Transaction::where('wallet_id', $wallets_id)->where('category', '<=','6')->sum('amount');
-        // $income = Transaction::where('wallet_id', $wallets_id)->where('category', '>','6')->sum('amount');
+
         $category = TransactionCategory::all();
-        return view('transaction', compact('wallets','transactions','expense','income','category'));
+        return view('transactions', compact('wallets','transactions','expense','income','category', 
+                    'incomeCategory','incomeAmountGrouped', 'expenseCategory', 'expenseAmountGrouped'));
     }
 }
 

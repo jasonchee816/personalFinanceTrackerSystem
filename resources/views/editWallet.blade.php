@@ -1,7 +1,9 @@
 @extends('layouts.default')
 
 @section('content')
-<div class = container1>
+
+@can('update', $wallet)
+<div class=container1>
 
     <h1>Edit wallet</h1>
 
@@ -18,11 +20,19 @@
 
         <div class="form-group">
             <label for="initial_balance">initial_balance</label>
-            <input type="text" name="initial_balance" id="initial_balance" class="form-control" value="{{ $wallet->initial_balance }}">
+            <input type="text" name="initial_balance" id="initial_balance" class="form-control"
+                value="{{ $wallet->initial_balance }}">
             <span style="color:red">@error('initial_balance'){{$message}}@enderror</span>
         </div>
         <br>
         <button type="submit" class="btn btn-primary">Save</button>
     </form>
 </div>
-@endsection
+@else
+<div class="mt-5 pt-5 mx-auto text-center">
+    You are not Authorized to Edit this Wallet!
+</div>
+@endcan
+
+
+@stop

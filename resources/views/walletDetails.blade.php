@@ -1,6 +1,8 @@
 @extends('layouts.default')
 
 @section('content')
+
+@can('view', $wallet)
 <div class="container1">
     <div class="row align-items-center mb-4">
         <div class="col-md-6">
@@ -14,7 +16,7 @@
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-outline-danger" style="background-color: #fff; color: #FF0000;"
-                        onclick="return confirm('Are you sure you want to delete this wallet?')">Delete</button>
+                        onclick="return confirm('Are you sure you want to delete this wallet? All related transactions will be deleted too! ')">Delete</button>
                 </form>
             </div>
         </div>
@@ -81,14 +83,21 @@
         </table>
     </div>
 </div>
-@endsection
 <script>
     document.addEventListener("DOMContentLoaded", function (event) {
-        document.querySelectorAll('.rowEdit').forEach(function(row) {
-            row.addEventListener('click', function() {
+        document.querySelectorAll('.rowEdit').forEach(function (row) {
+            row.addEventListener('click', function () {
                 console.log(this.dataset.href);
                 window.location.href = this.dataset.href;
             });
         });
     });
 </script>
+
+@else
+<div class="mt-5 pt-5 mx-auto text-center">
+    You are not Authorized to View this transaction!
+</div>
+@endcan
+
+@stop

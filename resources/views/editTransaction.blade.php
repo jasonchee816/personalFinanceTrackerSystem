@@ -2,6 +2,7 @@
 
 @section('content')
 
+@can('view', $transData)
 <div class=container1>
     <h1>Edit Transaction</h1>
     <form action="/editTrans/{{$transData->id}}" method="POST">
@@ -80,17 +81,22 @@
 
         <div class="d-grid col-3 mx-auto">
             <button type="submit" class="btn btn-primary showAfterType">Save Transaction </button>
-            <a href="{{ back()->getTargetUrl()}}" class="btn btn-outline-primary mt-3" >Cancel</a>
+            <a href="{{ back()->getTargetUrl()}}" class="btn btn-outline-primary mt-3">Cancel</a>
         </div>
     </form>
 
 </div>
 
 <script>
-    var categoryData =@json($categoryData);
+    var categoryData = @json($categoryData);
     var oldCategory = "{{$transData->getCategory()->first()->id}}";
 </script>
 <script src="{{asset('js/createTransaction.js')}}"></script>
 
+@else
+<div class="mt-5 pt-5 mx-auto text-center">
+    You are not Authorized to Edit this transaction!
+</div>
+@endcan
 
 @stop

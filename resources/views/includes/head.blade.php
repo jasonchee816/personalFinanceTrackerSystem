@@ -20,3 +20,6 @@
 
 <!-- Style CSS -->
 <link rel="stylesheet" href="{{asset('css/Style.css')}}">
+
+<!-- Chart JS -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

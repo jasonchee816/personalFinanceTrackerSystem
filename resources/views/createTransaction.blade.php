@@ -80,14 +80,14 @@
 
         <div class="d-grid col-3 mx-auto">
             <button type="submit" class="btn btn-primary showAfterType">Add new Transaction </button>
-            <a href="{{ back()->getTargetUrl()}}" class="btn btn-outline-primary mt-3" >Cancel</a>
+            <a href="{{ back()->getTargetUrl()}}" class="btn btn-outline-primary mt-3">Cancel</a>
         </div>
     </form>
 
 </div>
 
 <script>
-    var categoryData =@json($categoryData);
+    var categoryData = @json($categoryData);
     var oldCategory = "{{old('category')}}";
 </script>
 <script src="{{asset('js/createTransaction.js')}}"></script>

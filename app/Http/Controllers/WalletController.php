@@ -15,6 +15,15 @@ use App\Models\User;
 
 class WalletController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+        $this->middleware('can:isUser');
+    }
+    
+    function createWalletView(){
+        return view('createWallet');
+    }
+
     function createWallet(Request $request){
         $request->validate([
             'wallet' => 'required',
@@ -45,6 +54,7 @@ class WalletController extends Controller
         ]);
 
         $wallet = Wallet::find($request->id);
+        $this->authorize('update', $wallet);
         $wallet->name = $request->input('wallet');
         //Use the session
         $oldInitialBalance = session('oldInitialBalance');
@@ -72,13 +82,14 @@ class WalletController extends Controller
 
     function deleteWallet($id){
         $data = Wallet::find($id);
+        $this->authorize('delete', $data);
         $data->delete();
         return redirect("wallets");
     }
 
     //to show a specific wallet details
     function showWalletDetails(Wallet $wallet){
-
+        $this->authorize('view', $wallet);
         $transData = Wallet::find($wallet['id'])->getTransactions;
         $categoryData = TransactionCategory::all();
         // dd($transData);

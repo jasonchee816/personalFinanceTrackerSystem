@@ -10,6 +10,23 @@
     <h1>Hi, {{auth()->user()->name}} </h1>
 </div>
 <div class="row text-center">
+    <div class="mt-3 d-block d-md-none">
+        <a href="createWallet" class="mb-4 btn col-10">
+            <div class="card box-shadow walletBtn text-start p-3" style="background-color: #0F6CBD;">
+                <div class="card-body">
+                    <h5 class="card-title text-center text-white">+ Add New Wallet</h5>
+                </div>
+            </div>
+        </a>
+
+        <a href="createTrans" class="mb-4 btn col-10">
+            <div class="card box-shadow p-3 walletBtn text-start" style="background-color: #0F6CBD;">
+                <div class="card-body">
+                    <h5 class="card-title text-center text-white">+ Add New Transaction</h5>
+                </div>
+            </div>
+        </a>
+    </div>
     <div class="col-md-4 mt-3">
         <h1>Wallets</h1>
         @if($wallets->count() == 0)
@@ -51,9 +68,9 @@
         </a>
         @endforeach
     </div>
-    <div class="col-md-4 mt-3 pt-5">
+    <div class="col-md-4 mt-3 pt-5 d-none d-md-block">
         <a href="createWallet" class="mb-4 btn col-10">
-            <div class="card box-shadow p-2 walletBtn text-start py-5" style="background-color: #406E8E;">
+            <div class="card box-shadow p-2 walletBtn text-start py-5" style="background-color: #0F6CBD;">
                 <div class="card-body">
                     <h5 class="card-title text-white">+ Add New Wallet</h5>
                 </div>
@@ -61,7 +78,7 @@
         </a>
 
         <a href="createTrans" class="mb-4 btn col-10">
-            <div class="card box-shadow p-2 walletBtn text-start py-5" style="background-color: #406E8E;">
+            <div class="card box-shadow p-2 walletBtn text-start py-5" style="background-color: #0F6CBD;">
                 <div class="card-body">
                     <h5 class="card-title text-white">+ Add New Transaction</h5>
                 </div>
