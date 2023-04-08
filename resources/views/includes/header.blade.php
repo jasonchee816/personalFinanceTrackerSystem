@@ -1,3 +1,8 @@
+<style>
+    .navbar nav {
+        width: 100%
+    }
+</style>
 <nav class="navbar navbar-expand-md navbar-dark fixed-top p-0" aria-label="Third navbar example">
     <div class="container-fluid">
         <a class="navbar-brand ms-3 ms-md-5 ps-5 py-0" href="/#home">LMEO</a>

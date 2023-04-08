@@ -138,7 +138,7 @@ class UserController extends Controller
             }
             $wallets = auth()->user()->getWallets()->get();
             $wallets_id = auth()->user()->getWallets()->pluck('wallets.id');
-            $transactions = Transaction::whereIn('wallet_id', $wallets_id)->get();
+            $transactions = Transaction::whereIn('wallet_id', $wallets_id)->simplePaginate(5);
             return view('userHomepage', compact('wallets', 'transactions'));
         }
         return view('homepage');

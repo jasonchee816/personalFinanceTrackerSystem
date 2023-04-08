@@ -4,7 +4,21 @@
 
 @can('view', $transData)
 <div class=container1>
-    <h1>Edit Transaction</h1>
+    <div class="row align-items-center mb-4">
+        <div class="col-md-6">
+            <h1>Edit Transaction</h1>
+        </div>
+        <div class="col-md-6 d-flex justify-content-end">
+            <div class="text-end">
+                <form action="{{ url('deleteTrans/' . $transData->id) }}" method="POST" style="display:inline">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-outline-danger" style="background-color: #fff; color: #FF0000;"
+                        onclick="return confirm('Are you sure you want to delete this transaction?')">Delete</button>
+                </form>
+            </div>
+        </div>
+    </div>
     <form action="/editTrans/{{$transData->id}}" method="POST">
         @csrf
 
@@ -75,9 +89,6 @@
 
             </div>
         </div>
-
-
-
 
         <div class="d-grid col-3 mx-auto">
             <button type="submit" class="btn btn-primary showAfterType">Save Transaction </button>
