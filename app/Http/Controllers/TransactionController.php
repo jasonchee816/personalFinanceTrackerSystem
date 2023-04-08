@@ -163,7 +163,9 @@ class TransactionController extends Controller
     }
 
     function deleteTrans($id){
-        $data = Transaction::find($id)->delete();
+        $data = Transaction::find($id);
+        $this->authorize('delete', $data);
+        $data->delete();
         return redirect('/');
     }
 }
