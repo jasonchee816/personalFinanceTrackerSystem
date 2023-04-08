@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use Illuminate\Http\Request;
 //Model
 use App\Models\Wallet;
@@ -135,8 +136,35 @@ class WalletController extends Controller
     function showWalletDetails(Wallet $wallet){
         $transData = Wallet::find($wallet['id'])->getTransactions;
         $categoryData = TransactionCategory::all();
-        // dd($transData);
-        return view('walletDetails', compact('wallet', 'transData', 'categoryData'));
+
+        $transactionsGrouped = Transaction::where('wallet_id', $wallet['id'])
+                                ->select('category', DB::raw('SUM(amount) as amount'))
+                                ->groupBy('category')->get();
+
+        $expense_ids = TransactionCategory::where('type', 'expense')->pluck('transaction_categories.id')->all();
+        // $income_ids = TransactionCategory::where('type', 'income')->pluck('transaction_categories.id');
+        $expense = 0;
+        $income = 0;
+        $incomeCategory = [];
+        $incomeAmountGrouped = [];
+        $expenseCategory = [];
+        $expenseAmountGrouped = [];
+
+        for($i = 0; $i < count($transactionsGrouped); $i++){
+            if(in_array($transactionsGrouped[$i]->category, $expense_ids)){
+                $expense+= $transactionsGrouped[$i]->amount;
+                array_push($expenseAmountGrouped, $transactionsGrouped[$i]->amount);
+                array_push($expenseCategory, TransactionCategory::find($transactionsGrouped[$i]->category)->name);
+            }
+            else{
+                $income+=$transactionsGrouped[$i]->amount;
+                array_push($incomeAmountGrouped, $transactionsGrouped[$i]->amount);
+                array_push($incomeCategory, TransactionCategory::find($transactionsGrouped[$i]->category)->name);
+            }
+        }
+        // dd($expense, $income, $incomeCategory, $incomeAmountGrouped, $expenseCategory, $expenseAmountGrouped);
+        return view('walletDetails', compact('wallet', 'transData', 'categoryData' , 'expense', 'income', 'incomeCategory', 'incomeAmountGrouped'
+            , 'expenseCategory', 'expenseAmountGrouped'));
     }
 
 }

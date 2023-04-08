@@ -21,6 +21,12 @@
             </div>
         </div>
     </div>
+    @if($transData->count() == 0)
+    <span>
+        You have no recent transactions.
+    </span>
+    @endif
+
     <div class="row">
         <div class="col-4">
             <canvas id="myChart"></canvas>
@@ -32,6 +38,29 @@
             <canvas id="myChart3"></canvas>
         </div>
     </div>
+
+    <div class="row text-center">
+        <div class="col-md-6 mt-3">
+            <div class="card box-shadow p-2 walletBtn text-start mb-4" style="background-color: #406E8E;">
+                <div class="card-body">
+                    <h5 class="card-title text-white" style="margin-bottom: 0.5rem;">Total income</h5>
+                    <h6 class="card-subtitle mb-2 text-white"><i class="fas fa-coins"></i> RM {{
+                        number_format($income, 2)}}</h6>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 mt-3 flex-end">
+            <div class="card box-shadow p-2 walletBtn text-start mb-4" style="background-color: #406E8E;">
+                <div class="card-body">
+                    <h5 class="card-title text-white" style="margin-bottom: 0.5rem;">Total expenses</h5>
+                    <h6 class="card-subtitle mb-2 text-white"><i class="fas fa-coins"></i> RM {{
+                        number_format($expense, 2)}}</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <div class="row">
         <div class="col-md-4">
             <div class="card mb-4 box-shadow">
@@ -110,5 +139,15 @@
     You are not Authorized to View this Wallet!
 </div>
 @endcan
+
+<script>
+    var income = @json($income);
+    var expense = @json($expense);
+    var incomeCategory = @json($incomeCategory);
+    var incomeAmountGrouped = @json($incomeAmountGrouped);
+    var expenseCategory = @json($expenseCategory);
+    var expenseAmountGrouped = @json($expenseAmountGrouped);
+</script>
+<script src="{{asset('js/transactions.js')}}"></script>
 
 @stop
