@@ -161,5 +161,18 @@ class TransactionController extends Controller
         return view('transactions', compact('wallets','transactions','expense','income','category', 
                     'incomeCategory','incomeAmountGrouped', 'expenseCategory', 'expenseAmountGrouped'));
     }
+
+    function deleteTrans($id){
+        $data = Transaction::find($id);
+        $this->authorize('delete', $data);
+        $wallet = $data->getWallet()->first();
+        if($data->getCategory()->first()->type == 'income')
+            $wallet->balance -= $data->amount;
+        else
+            $wallet->balance += $data->amount;
+        $wallet->save();
+        $data->delete();
+        return redirect('/');
+    }
 }
 

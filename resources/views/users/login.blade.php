@@ -15,7 +15,7 @@
                                 @csrf
                                 <!-- Email input -->
                                 <div class="form-floating mb-3">
-                                    <input type="email" id="email" name="email" placeholder="Email" class="form-control input-lg" />
+                                    <input type="email" id="email" name="email" placeholder="Email" class="form-control input-lg" value={{old('email')}}>
                                     <label class="form-label" for="email">Email address</label>
                                     <span style="color:red">@error('email'){{$message}}@enderror</span>
                                 </div>

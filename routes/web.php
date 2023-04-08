@@ -47,6 +47,7 @@ Route::get('/editTrans/{id}',[TransactionController::class, 'editTransView']);
 Route::post('/editTrans/{id}',[TransactionController::class,'editTrans']);
 
 //Delete Transaction
+Route::delete('/deleteTrans/{id}', [TransactionController::class, 'deleteTrans']);
 
 //Profile
 Route::get('profile',[UserController::class, 'getProfile']);

@@ -124,13 +124,15 @@ class WalletController extends Controller
     function deleteWallet($id){
         $data = Wallet::find($id);
         $this->authorize('delete', $data);
+        $data->getTransactions()->each(function ($transaction) {
+            $transaction->delete();
+        });
         $data->delete();
         return redirect("wallets");
     }
 
     //to show a specific wallet details
     function showWalletDetails(Wallet $wallet){
-        $this->authorize('view', $wallet);
         $transData = Wallet::find($wallet['id'])->getTransactions;
         $categoryData = TransactionCategory::all();
         // dd($transData);

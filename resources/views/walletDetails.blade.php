@@ -34,7 +34,7 @@
             <div class="card mb-4 box-shadow">
                 <div class="card-body text-right">
                     <h5 class="card-title">Balance:</h5>
-                    <p class="card-text">RM {{ $wallet->balance }}</p>
+                    <p class="card-text">RM {{ number_format($wallet->balance, 2) }}</p>
                 </div>
             </div>
         </div>
@@ -96,7 +96,7 @@
 
 @else
 <div class="mt-5 pt-5 mx-auto text-center">
-    You are not Authorized to View this transaction!
+    You are not Authorized to View this Wallet!
 </div>
 @endcan
 

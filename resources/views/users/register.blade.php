@@ -16,24 +16,24 @@
                             @csrf                                
                                 <!-- Name input -->
                                 <div class="form-floating mb-4">
-                                    <input type="name" id="name" name="name" placeholder="Name"
-                                        class="form-control input-lg" />
-                                    <label class="form-label" for="name">Name</label>
+                                    <input type="name" id="name" name="name" placeholder="Name" 
+                                        class="form-control input-lg" value={{old('name')}}>
+                                    <label class="form-label" for="name" >Name</label>
                                     <span style="color:red">@error('name'){{$message}}@enderror</span>
                                 </div>
 
                                 <!-- Email input -->
                                 <div class="form-floating mb-4">
-                                    <input type="email" id="email" name="email" placeholder="Email"
-                                        class="form-control input-lg" />
+                                    <input type="email" id="email" name="email" placeholder="Email" 
+                                        class="form-control input-lg" value={{old('email')}}>
                                     <label class="form-label" for="email">Email address</label>
                                     <span style="color:red">@error('email'){{$message}}@enderror</span>
                                 </div>
 
                                 <!-- telNo input -->
                                 <div class="form-floating mb-4">
-                                    <input type="number" id="tel_no" name="tel_no" placeholder="Telephon No"
-                                        class="form-control input-lg" />
+                                    <input type="number" id="tel_no" name="tel_no" placeholder="Telephon No" 
+                                        class="form-control input-lg" value={{old('tel_no')}}>
                                     <label class="form-label" for="tel_no">Telephone Number</label>
                                     <span style="color:red">@error('tel_no'){{$message}}@enderror</span>
                                 </div>
