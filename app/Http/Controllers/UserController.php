@@ -8,14 +8,20 @@ use App\Models\User;
 use App\Models\Wallet;
 use App\Models\Transaction;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class UserController extends Controller
 {
+
+    protected $redirectTo = '/';
+
     public function __construct()
     {
+        $this->middleware('guest')->except('getProfile', 'editProfile', 'showHomepageDetails', 'logout');
         $this->middleware('auth', ['only' => [
             'getProfile',
-            'editProfile'
+            'editProfile',
+            'logout',
         ]]);
     }
 
@@ -127,6 +133,9 @@ class UserController extends Controller
     // Show related homepage
     function showHomepageDetails(){
         if(Auth::check()){
+            if (Gate::allows('isAdmin')) {
+                return redirect('adminHomepage');
+            }
             $wallets = auth()->user()->getWallets()->get();
             $wallets_id = auth()->user()->getWallets()->pluck('wallets.id');
             $transactions = Transaction::whereIn('wallet_id', $wallets_id)->get();
