@@ -22,6 +22,17 @@
         </div>
     </div>
     <div class="row">
+        <div class="col-4">
+            <canvas id="myChart"></canvas>
+        </div>
+        <div class="col-4">
+            <canvas id="myChart2"></canvas>
+        </div>
+        <div class="col-4">
+            <canvas id="myChart3"></canvas>
+        </div>
+    </div>
+    <div class="row">
         <div class="col-md-4">
             <div class="card mb-4 box-shadow">
                 <div class="card-body">
