@@ -9,16 +9,16 @@
     </div>
     @endif
     <div class="row mb-3">
-        <div class="col-4">
+        <div class="col-6">
             <canvas id="balanceChart"></canvas>
         </div>
-        <div class="col-4">
+        <div class="col-6">
             <canvas id="typeChart"></canvas>
         </div>
     </div>
 
     <div class="row mb-3">
-        <h1>Transactions List</h1>
+        <h1>Wallets List</h1>
         @foreach($wallets as $wallet)
         <a href="{{ url('wallet/' . $wallet->id . '/details') }}" class="mb-4 btn">
             <div class="card box-shadow p-2 walletBtn text-start" style="background-color: #406E8E;">

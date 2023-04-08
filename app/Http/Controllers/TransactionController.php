@@ -131,7 +131,7 @@ class TransactionController extends Controller
     function showTransactions(){
         $wallets = auth()->user()->getWallets()->get();
         $wallets_id = auth()->user()->getWallets()->pluck('wallets.id');
-        $transactions = Transaction::where('wallet_id', $wallets_id)->orderBy('trans_date', 'DESC')->get();
+        $transactions = Transaction::whereIn('wallet_id', $wallets_id)->orderBy('trans_date', 'DESC')->get();
         $transactionsGrouped = Transaction::where('wallet_id', $wallets_id)
                                 ->select('category', DB::raw('SUM(amount) as amount'))
                                 ->groupBy('category')->get();
