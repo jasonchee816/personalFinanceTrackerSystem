@@ -19,7 +19,7 @@ class WalletController extends Controller
         $this->middleware('auth');
         $this->middleware('can:isUser');
     }
-    
+
     function createWalletView(){
         return view('createWallet');
     }
@@ -45,7 +45,48 @@ class WalletController extends Controller
         $user_id = auth()->id();
         $wallets = User::find($user_id)->getWallets;
         return view('wallet', compact('wallets'));
+
+        foreach ($wallets as $wallet) {
+            $chart_data[] = [
+                'name' => $wallet->name,
+                'balance' => $wallet->balance
+            ];
+        }
     }
+    function getChartData()
+    {
+        $user_id = auth()->id();
+        $wallets = User::find($user_id)->getWallets;
+        $balance_data = [];
+        $type_data = [];
+
+        foreach ($wallets as $wallet) {
+            $balance_data[] = [
+                'name' => $wallet->name,
+                'balance' => $wallet->balance
+            ];
+            $type_data[] = [
+                'name' => $wallet->type,
+                'count' => 1
+            ];
+        }
+
+        $type_data = array_reduce($type_data, function($carry, $item) {
+            $index = array_search($item['name'], array_column($carry, 'name'));
+            if ($index !== false) {
+                $carry[$index]['count']++;
+            } else {
+                $carry[] = $item;
+            }
+            return $carry;
+        }, []);
+
+        return response()->json([
+            'balance_data' => $balance_data,
+            'type_data' => $type_data
+        ]);
+    }
+
 
     function updateWallet(Request $request){
         $request->validate([

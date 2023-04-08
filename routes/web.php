@@ -72,10 +72,12 @@ Route::get('adminOperation',[AdminController::class,'showAdminOperation']);
 Route::get('createCategory',[AdminController::class,'showCreateCategory']);
 Route::post('createCategory/form',[AdminController::class,'creataTransactionCategory']);
 
-//Delete Trans Category 
+//Delete Trans Category
 Route::get('deleteCategory/{id}',[AdminController::class,'DeleteTransactionCategory']);
 
 //Update Trans Category
 Route::get('passCategory/{id}', [AdminController::class, 'passTransactionCategory']);
 Route::put('updateCategory', [AdminController::class, 'UpdateTransactionCategory']);
 
+//getChartData
+Route::get('/wallet/getChartData', [WalletController::class, 'getChartData']);
