@@ -1,8 +1,3 @@
-<style>
-    .navbar nav {
-        width: 100%
-    }
-</style>
 <nav class="navbar navbar-expand-md navbar-dark fixed-top p-0" aria-label="Third navbar example">
     <div class="container-fluid">
         <a class="navbar-brand ms-3 ms-md-5 ps-5 py-0" href="/#home">LMEO</a>
@@ -42,12 +37,6 @@
                 <li class="nav-item">
                     <a class="nav-link px-3 ps-5 ps-md-3 ms-5 ms-md-0" href="/adminHomepage">OVERVIEW</a>
                 </li>
-                <!--<li class="nav-item">
-                    <a class="nav-link px-3 ps-5 ps-md-3 ms-5 ms-md-0" href="/wallets">WALLETS</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link px-3 ps-5 ps-md-3 ms-5 ms-md-0" href="/transactions">TRANSACTIONS</a>
-                </li>-->
                 <li class="nav-item">
                     <a class="nav-link px-3 ps-5 ps-md-3 ms-5 ms-md-0" href="/adminOperation">OPERATION</a>
                 </li>
