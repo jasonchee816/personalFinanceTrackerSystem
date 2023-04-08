@@ -92,7 +92,6 @@ class WalletController extends Controller
 
     //to show a specific wallet details
     function showWalletDetails(Wallet $wallet){
-        $this->authorize('view', $wallet);
         $transData = Wallet::find($wallet['id'])->getTransactions;
         $categoryData = TransactionCategory::all();
         // dd($transData);
